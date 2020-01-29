@@ -1,0 +1,9 @@
+Please enter Username: BIGBOIDADDYDUDE
+Please enter Password: password
+Please select User-type: FS
+-------------------------
+Buy-Standard:  BS
+Sell-Stantard: SS
+Full-Standard: FS
+-------------------------
+Successfully created new user, welcome BIGBOIDADDYDUDE!

@@ -1,0 +1,3 @@
+Please enter Item Name: OHLORDYHEISLONGERTHAN25CHARACTERS
+
+Error: Item name must be 25 characters or less.

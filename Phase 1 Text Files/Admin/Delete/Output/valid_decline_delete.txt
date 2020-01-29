@@ -1,0 +1,3 @@
+Are you sure you want to delete user: Test123 (Yes/No)
+Delete process aborted.
+Sending you back to main menu...

@@ -1,0 +1,5 @@
+Please enter Item Name: DRAGON SCIMITAR
+Please enter the minimum bid: 15.99
+Please enter the number of days to auction: 777
+
+Error: There must be a maximum of 100 days to auction an item.

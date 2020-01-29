@@ -1,0 +1,2 @@
+Are you sure you want to delete user: Chicken Nuggie (Yes/No)
+Error: User does not exist

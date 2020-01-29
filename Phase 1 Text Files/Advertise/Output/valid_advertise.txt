@@ -1,0 +1,5 @@
+Please enter Item Name: DRAGON SCIMITAR
+Please enter the minimum bid: 15.99
+Please enter the number of days to auction: 7
+
+You have put up DRAGON SCIMITAR for auction for 7 days with a minimum bid of $15.99!
