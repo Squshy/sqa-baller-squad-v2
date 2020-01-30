@@ -1,0 +1,11 @@
+Enter an Item: DRAGON SCIMITAR
+Enter the seller's name: MR.RUNESCAPEMAN
+Current bid: $20.00
+----------------------------------------------------
+Would you like to bid on it? (Yes/No): Yes
+----------------------------------------------------
+How much would you like to bid? (Min $21.00): 999.99
+----------------------------------------------------
+You have bid the max amount!
+You have won this auction.
+====================================================
