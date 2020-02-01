@@ -1,3 +1,0 @@
-Enter Transaction ID to refund: qq
-Are you sure (Yes/No): Yes
-Error: Transaction ID does not exist.

@@ -1,2 +1,0 @@
-Are you sure you want to delete user: ADMIN BOY (Yes/No)
-Error: You cannot delete yourself

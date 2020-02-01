@@ -1,4 +1,0 @@
-Enter an Item: DRAGON SCIMITAR
-Enter the seller's name: HECKING COOLMAN
---------------------------------------------
-You cannot bid on your own item.

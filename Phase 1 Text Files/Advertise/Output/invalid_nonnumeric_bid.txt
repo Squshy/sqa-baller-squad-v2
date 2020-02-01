@@ -1,4 +1,0 @@
-Please enter Item Name: DRAGON SCIMITAR
-Please enter the minimum bid: ABC
-
-Error: Minimum bid must be between $0.01 and $999.99.
