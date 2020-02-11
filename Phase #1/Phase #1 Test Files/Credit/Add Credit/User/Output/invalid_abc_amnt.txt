@@ -1,4 +1,0 @@
-Input credit amount: ABC
---------------------------------------------
-You must enter a minimum of $0.01 credits.
-============================================
