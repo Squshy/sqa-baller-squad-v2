@@ -25,6 +25,7 @@ void Menu(Users);
 void Title();
 void PressEnterToExit();
 void ClearScreen();
+string error = "";
 
 int main() {
 	
@@ -56,8 +57,9 @@ void Home(Users user){
 	const string transactionlogin = "login";
 	const string transactionLogin = "Login";
 	bool login;
+	bool ifExit = true;
 	
-	do {
+	while(ifExit == true){
 		Title();
 		cout << "\nPlease Type login or exit!";
 		cout << "\nEnter Command: ";
@@ -71,21 +73,22 @@ void Home(Users user){
 				 Menu(user);
 				 ClearScreen();
 			 }else{
-				 cout << "\nYour Username or Password were entered incorrectly. Please Try again!\n";
+				 ClearScreen();
+				 error = "\nYour Username or Password were entered incorrectly. Please Try again!\n";
 			 }
 			
      	}else if(choice.compare(exit) == 0 || choice.compare(Exit) == 0){
-     		break;
+     		ifExit = false;
      	}else if(choice.find("/") != std::string::npos || choice.find(" ") != std::string::npos){
      		ClearScreen();
-			 cout << "\nSlashes and Spaces are not Allowed!" << endl;
+			error = "\nSlashes and Spaces are not Allowed!\n";
 			
 		}else{
 			//ClearScreen();
-			cout << "\nYou must login before you can access our system" << endl;
-
+			error = "\nYou must login before you can access our system\n";
 		}
-	}while(choice.compare(exit) != 0 && choice.compare(Exit) != 0);	
+		cout << error;
+	}	
 	
 }
 
@@ -93,15 +96,21 @@ void Menu(Users user){
 	string choice = "";
 	const string exit = "logout";
 	const string Exit = "Logout";
+	bool ifLogout = true;
+	std::cin.ignore( std::numeric_limits <std::streamsize> ::max(), '\n' );
 	Title();
 	cout << "\nWelcome " + user.getUserName() + "! Glad to see you are back :)";
-	do {
+	while(ifLogout == true){
 		
-		cout << "Enter Command: ";
-
+		
+		cout << "\nEnter Command: ";
 		getline(cin, choice);
 
-	}while(choice.compare(exit) != 0 && choice.compare(Exit) != 0); 
+		if(choice.compare(exit) == 0 || choice.compare(Exit) == 0){
+			ifLogout = false;
+		}
+
+	} 
 
 }
 

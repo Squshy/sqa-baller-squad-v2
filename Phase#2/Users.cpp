@@ -10,8 +10,14 @@
 #include "Users.h"
 #include <string>
 
+/**
+* Default Constructor for the Users Class
+* */
 Users::Users(){}
 
+/**
+ * * Users Class Method for Login
+*/ 
 bool Users::Login(){
 	string username = "";
 	string password = "";
@@ -23,12 +29,14 @@ bool Users::Login(){
      	cin >> password;
 		setUserName(username);
 		setPassword(password);
-		validation = Users::ValidateCredentials();	
+		validation = Users::ValidateCredentials();
 
 		return validation;
      	
 }
-
+/**
+* Users Class Method for validating their credentials on login
+*/ 
 bool Users::ValidateCredentials(){
 
 	ifstream File;

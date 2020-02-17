@@ -8,6 +8,18 @@ main.cpp: main.cpp
 
 Users.cpp: Users.cpp
 	 g++ -c Users.cpp
+
+Admin.cpp: Admin.cpp
+	 g++ -c Admin.cpp	
+
+Advertise.cpp: Advertise.cpp
+	 g++ -c Advertise.cpp 
+
+Bid.cpp: Bid.cpp
+	 g++ -c Bid.cpp
+
+Items.cpp: Items.cpp
+	 g++ -c Items.cpp 
      
 clean:
 	 del main.o main.exe Users.o 	

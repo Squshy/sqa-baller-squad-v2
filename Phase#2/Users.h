@@ -29,51 +29,93 @@ using namespace std;
 class Users{
 	
 	private:
-		/** Private Attributes */
+		/** Private Attribute for User Name */
 		string userName;
+		/** Private Attribute for Users password */
 		string password;
+		/** Private Attribute for User type */
 		string userType;
+		/** Private Attribute for Users credits */
 		float credits;
 
 	public:
-	/**
-	 * Default Constructor for the Users Class
-	 * */
+		/**
+		 * Default Constructor for the Users Class
+		 * */
 		Users(); 	
 
+		/**
+		 * Setter for User Name private attribute
+		 */
 		void setUserName(string name){
 			userName = name;
 		}
+		/**
+		 * Getter for User Name private attribute
+		 */
 		string getUserName(){
 			return userName;
 		}
-
+		/**
+		 * Setter for password private attribute
+		 */
 		void setPassword(string name){
 			password = name;
 		}
+		/**
+		 * Getter for password private attribute
+		 */
 		string getPassword(){
 			return password;
 		}
-
+		/**
+		 * Setter for User Type private attribute
+		 */
 		void setUserType(string type){
 			userType = type;
 		}
+		/**
+		 * Getter for User Type private attribute
+		 */
 		string getUserType(){
 			return userType;
 		}
-
+		/**
+		 * Setter for setting User Credits private attribute
+		 */
 		void setCredits(float cred){
 			credits = cred;
 		}
+		/**
+		 * Getter for getting User Credits private attribute
+		 */
 		float getCredits(){
 			return credits;
 		}
 		
+		/**
+		 * Users Class Method for Login
+		 */ 
 		bool Login();
+		/**
+		 * Users Class Method for validating their credentials on login
+		 */ 
 		bool ValidateCredentials();
+		/**
+		 * Users Class Method for Logout
+		 */ 
 		void Logout();
+		/**
+		 * Users Class Method to change the user password
+		 */ 
 		void ChangePassword();
+		/**
+		 * Users Class Method for creating an account
+		 */ 
 		void Create();
+		/**
+		 * Users Class Method to add credits to a user account
+		 */ 
 		void AddCredits();
 
 };
