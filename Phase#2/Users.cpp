@@ -1,5 +1,5 @@
 /**
-* Main function for Our Auction Sales Service Project 
+* Users Function Definition file for Our Auction Sales Service Project 
 *
 * @author Paul Kerrigan, Henry Zheng, Calvin Lapp
 * @date January 24, 2020
@@ -10,14 +10,10 @@
 #include "Users.h"
 #include <string>
 
-/**
-* Default Constructor for the Users Class
-* */
+
 Users::Users(){}
 
-/**
- * * Users Class Method for Login
-*/ 
+
 bool Users::Login(){
 	string username = "";
 	string password = "";
@@ -34,17 +30,17 @@ bool Users::Login(){
 		return validation;
      	
 }
-/**
-* Users Class Method for validating their credentials on login
-*/ 
+
 bool Users::ValidateCredentials(){
 
+	//Declarations
 	ifstream File;
 	string getUser, getPwd, getType;
 	float getCred;
+	bool exists = false;
 
 	File.open("current_user_accounts_file.txt"); //opening the file
-	bool exists = false;
+	
 	//getting the user info from the file
 	while (File >> getUser >> getPwd >> getType >> getCred) {
 		if (getUserName().compare(getUser) == 0 && getPassword().compare(getPwd) == 0){
@@ -64,4 +60,20 @@ bool Users::ValidateCredentials(){
 
 }
 
+
+void Users::Logout(){
+
+}
+
+void Users::ChangePassword(){
+
+}
+
+void Users::Create(){
+
+}
+
+void Users::AddCredits(){
+
+}
 

@@ -1,5 +1,5 @@
 /**
-* Main function for Our Auction Sales Service Project 
+* Main Class for Our Auction Sales Service Project 
 *
 * @author Paul Kerrigan, Henry Zheng, Calvin Lapp
 * @since January 24, 2020
@@ -9,9 +9,9 @@
 
 #include <iostream>       
 #include <istream>
-#include <iomanip> 		// for output formatting
-#include <stdexcept>	// for invalid_argument
-#include <sstream>		// for stringstream
+#include <iomanip> 		
+#include <stdexcept>	
+#include <sstream>		
 #include <cstdlib>
 #include <stdio.h>
 #include <string>
@@ -27,6 +27,9 @@ void PressEnterToExit();
 void ClearScreen();
 string error = "";
 
+/**
+ * Main Function Definition
+ */ 
 int main() {
 	
 	//Declarations
@@ -49,6 +52,10 @@ catch(const exception& ex)
 	return 0;
 }
 
+/**
+ * Home screen when someone first comes on to the application
+ * It will ask the user to login or exit the application
+ */ 
 void Home(Users user){
 	
 	string choice = "";
@@ -92,11 +99,16 @@ void Home(Users user){
 	
 }
 
+/**
+ * Function for after the user has logged in showing the menu screen 
+ * This is where the user will enter in transactions and navigate the application
+ */ 
 void Menu(Users user){
 	string choice = "";
 	const string exit = "logout";
 	const string Exit = "Logout";
 	bool ifLogout = true;
+	ClearScreen();
 	std::cin.ignore( std::numeric_limits <std::streamsize> ::max(), '\n' );
 	Title();
 	cout << "\nWelcome " + user.getUserName() + "! Glad to see you are back :)";
@@ -114,17 +126,26 @@ void Menu(Users user){
 
 }
 
+/**
+ * Delay for the user to hit enter to close the console
+ */ 
 void PressEnterToExit()
   {
   	std::cout << "\nPress ENTER to exit... " << flush;
   	std::cin.ignore( std::numeric_limits <std::streamsize> ::max(), '\n' );
   }
 
+/**
+ * Clears the screen 
+ */ 
 void ClearScreen()
 {
 	cout << string(100, '\n');
 }
-  
+
+/**
+ * Title for our Application
+ */  
 void Title(){
 
 	cout << "==========================================" << endl

@@ -1,5 +1,5 @@
 /**
-* Users Header File for Our Auction Sales Service Project 
+* @brief Users Header File for Our Auction Sales Service Project 
 *
 * @author Paul Kerrigan, Henry Zheng, Calvin Lapp
 * @date January 24, 2020
@@ -10,10 +10,10 @@
 #ifndef _USERS_H
 #define _USERS_H
 
-#include <iostream> 	// for console I/O
-#include <iomanip>		// for output stream formatting
-#include <sstream>		// for stringstream
-#include <stdexcept>	// for standard exceptions
+#include <iostream> 	
+#include <iomanip>		
+#include <sstream>		
+#include <stdexcept>	
 #include <cstdio> 	
 #include <cstdlib>
 #include <string>
@@ -22,14 +22,15 @@
 using namespace std;
 
 /** @brief Users Class for user specific methods
- * Description:   
- * 
- * 
+ * @description: Class to represent regular users for this system including
+ *				 full-standard, buy-standard and sell standard
+ * Contains functions to allow users to login, logout, change password, add credits to their account
+ * and if they are a new user they can create an account
  */
 class Users{
 	
 	private:
-		/** Private Attribute for User Name */
+		
 		string userName;
 		/** Private Attribute for Users password */
 		string password;
@@ -42,7 +43,12 @@ class Users{
 		/**
 		 * Default Constructor for the Users Class
 		 * */
-		Users(); 	
+		Users();
+
+		/**
+		 * The amount of credit a user can add per login session
+		 */ 
+		const float SESSION_CREDIT_LIMIT = 9999.99; 	
 
 		/**
 		 * Setter for User Name private attribute
@@ -116,7 +122,7 @@ class Users{
 		/**
 		 * Users Class Method to add credits to a user account
 		 */ 
-		void AddCredits();
+		virtual void AddCredits();
 
 };
 
