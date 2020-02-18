@@ -17,3 +17,7 @@ Items::Items(){
 void Items::CheckItems(){
 
 }
+
+void Items::FindItems(){
+    
+}

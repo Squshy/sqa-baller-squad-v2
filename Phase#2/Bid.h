@@ -43,7 +43,7 @@ class Bid : public Items{
          * Constant to hold the minimum allowable percentage higher than the previous
          * bid    
          */
-        const float MINIMUM_BID_PERCENT = 0.05;
+        const float MINIMUM_BID_PERCENT = 1.05;
 
         /**
          * Calculates the minimum amount the user has to be

@@ -65,8 +65,8 @@ class Users{
 		/**
 		 * Setter for password private attribute
 		 */
-		void setPassword(string name){
-			password = name;
+		void setPassword(string pwd){
+			password = pwd;
 		}
 		/**
 		 * Getter for password private attribute
@@ -108,10 +108,6 @@ class Users{
 		 */ 
 		bool ValidateCredentials();
 		/**
-		 * Users Class Method for Logout
-		 */ 
-		void Logout();
-		/**
 		 * Users Class Method to change the user password
 		 */ 
 		void ChangePassword();
@@ -123,6 +119,11 @@ class Users{
 		 * Users Class Method to add credits to a user account
 		 */ 
 		virtual void AddCredits();
+
+		/**
+		 * Reads the current user accounts file at the start before login
+		 */ 
+		void ReadUsersFile();
 
 };
 

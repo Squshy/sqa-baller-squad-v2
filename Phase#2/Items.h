@@ -110,7 +110,10 @@ class Items{
          */
 		void CheckItems();     
 
-         
+		/**
+		 * Items class method to search for an item based on id and item name 
+		 */ 
+        void FindItems(); 
 
 };
 

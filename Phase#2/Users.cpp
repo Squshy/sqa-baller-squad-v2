@@ -43,8 +43,12 @@ bool Users::ValidateCredentials(){
 	
 	//getting the user info from the file
 	while (File >> getUser >> getPwd >> getType >> getCred) {
+
+
 		if (getUserName().compare(getUser) == 0 && getPassword().compare(getPwd) == 0){
 			exists = true;
+			setUserType(getType);
+			setCredits(getCred);
 			break;
 		}
 
@@ -60,11 +64,6 @@ bool Users::ValidateCredentials(){
 
 }
 
-
-void Users::Logout(){
-
-}
-
 void Users::ChangePassword(){
 
 }
@@ -75,5 +74,9 @@ void Users::Create(){
 
 void Users::AddCredits(){
 
+}
+
+void Users::ReadUsersFile(){
+	
 }
 

@@ -41,14 +41,14 @@ class Advertise : public Items{
         Advertise();
 
         /**
-		 * Setter for User Name private attribute
+		 * Setter for Remaining Days private attribute
 		 */
 		void setRemainingDays(short remaining){
 			remainingDays = remaining;
 		}
 
 		/**
-		 * Getter for User Name private attribute
+		 * Getter for Remaining Days private attribute
 		 */
 		short getRemainingDays(){
 			return remainingDays;

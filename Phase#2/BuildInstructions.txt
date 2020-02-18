@@ -1,0 +1,9 @@
+Build Instrctions:
+
+1. Run the Makefile 
+2. If on windows type "main" into cmd
+3. If on linux type "./main.exe"
+4. Type login to login
+5. Username = test123
+6. Password = secret
+7. type logout to logout

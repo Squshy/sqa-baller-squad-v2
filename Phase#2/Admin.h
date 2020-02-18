@@ -53,11 +53,6 @@ class Admin : public Users{
          */ 
         void Refund(Items);
         /**
-         * Overloaded function to change an admin password   
-         */
-        void ChangePassword();
-
-        /**
          * Overloaded function to add credits to a users account
          */ 
         void AddCredits();

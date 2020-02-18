@@ -67,6 +67,9 @@ void Home(Users user){
 	bool ifExit = true;
 	
 	while(ifExit == true){
+		
+		
+		cout << error;
 		Title();
 		cout << "\nPlease Type login or exit!";
 		cout << "\nEnter Command: ";
@@ -91,10 +94,12 @@ void Home(Users user){
 			error = "\nSlashes and Spaces are not Allowed!\n";
 			
 		}else{
-			//ClearScreen();
-			error = "\nYou must login before you can access our system\n";
+			if(error.empty()){
+				error = "\nYou must login before you can access our system\n";
+			}
 		}
-		cout << error;
+		ClearScreen();
+		
 	}	
 	
 }
@@ -107,20 +112,42 @@ void Menu(Users user){
 	string choice = "";
 	const string exit = "logout";
 	const string Exit = "Logout";
+	const string fullstandardUser = "FS";
+	const string buyStandardUser = "BS";
+	const string admin = "AA";
+	const string sellStandardUser = "SS";
 	bool ifLogout = true;
 	ClearScreen();
 	std::cin.ignore( std::numeric_limits <std::streamsize> ::max(), '\n' );
 	Title();
 	cout << "\nWelcome " + user.getUserName() + "! Glad to see you are back :)";
 	while(ifLogout == true){
-		
-		
-		cout << "\nEnter Command: ";
-		getline(cin, choice);
+
+		if(user.getUserType().compare(fullstandardUser) == 0){
+
+			cout << "\nEnter Command: ";
+			getline(cin, choice);
+
+		}else if(user.getUserType().compare(buyStandardUser) == 0){
+			cout << "\nEnter Command: ";
+			getline(cin, choice);
+
+		}else if(user.getUserType().compare(sellStandardUser) == 0){
+			cout << "\nEnter Command: ";
+			getline(cin, choice);
+
+		}else if(user.getUserType().compare(admin) == 0){
+			cout << "\nEnter Command: ";
+			getline(cin, choice);
+
+		}
 
 		if(choice.compare(exit) == 0 || choice.compare(Exit) == 0){
+			
 			ifLogout = false;
+			
 		}
+		//std::cin.ignore( std::numeric_limits <std::streamsize> ::max(), '\n' );
 
 	} 
 
