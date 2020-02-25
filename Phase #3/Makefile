@@ -1,7 +1,7 @@
-all: main.exe main.cpp Users.cpp Admin.cpp Advertise.cpp Bid.cpp Items.cpp
+all: auction-system.exe main.cpp Users.cpp Admin.cpp Advertise.cpp Bid.cpp Items.cpp
 
-main.exe: main.o Users.o Admin.o Advertise.o Bid.o Items.o Writer.o
-	 g++ -o main.exe main.o Users.o Admin.o Advertise.o Bid.o Items.o Writer.o
+main.exe: auction-system.o Users.o Admin.o Advertise.o Bid.o Items.o Writer.o
+	 g++ -o auction-system.exe auction-system.o Users.o Admin.o Advertise.o Bid.o Items.o Writer.o
 
 main.cpp: main.cpp
 	 g++ -c main.cpp
