@@ -1,0 +1,126 @@
+\hypertarget{class_writer}{}\doxysection{Writer Class Reference}
+\label{class_writer}\index{Writer@{Writer}}
+
+
+\mbox{\hyperlink{class_writer}{Writer}} Class to write to files @description\+: ~\newline
+  
+
+
+
+
+{\ttfamily \#include $<$Writer.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{Indent}\textbf{ Writer.\+cpp}\par
+{\em \mbox{\hyperlink{class_writer}{Writer}} Function Definition file for Our Auction Sales Service Project
+
+\begin{DoxyAuthor}{Author}
+Paul Kerrigan, Henry Zheng, Calvin Lapp 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+January 24, 2020 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+}\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_writer_aedc04cd5fb7b4b99d3ad906fef2116ce}{Writer}} ()
+\item 
+void \mbox{\hyperlink{class_writer_abd6a0866d074fecec1199efc43c35f9f}{Write\+To\+Daily\+Transaction\+File}} ()
+\item 
+void \mbox{\hyperlink{class_writer_a4d8509f2c0cbfdc1859e8201098074fd}{Write\+To\+User\+File}} ()
+\item 
+void \mbox{\hyperlink{class_writer_a6d15729a0b56807fc02f429adfcd2902}{Write\+To\+Available\+Items\+File}} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const string \mbox{\hyperlink{class_writer_a3222bafbd1fab99f4548e7c049ed6775}{D\+A\+I\+L\+Y\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N\+\_\+\+F\+I\+LE}} = \char`\"{}daily\+\_\+transaction\+\_\+file.\+txt\char`\"{}
+\item 
+const string \mbox{\hyperlink{class_writer_abbfdc7e0b46e57bee79ce7628a3e2dc3}{C\+U\+R\+R\+E\+N\+T\+\_\+\+U\+S\+E\+R\+\_\+\+A\+C\+C\+O\+U\+N\+T\+S\+\_\+\+F\+I\+LE}} = \char`\"{}current\+\_\+user\+\_\+accounts\+\_\+file.\+txt\char`\"{}
+\item 
+const string \mbox{\hyperlink{class_writer_a77cf1d14243ea258128b47c8ab4d1b84}{A\+V\+A\+I\+L\+A\+B\+L\+E\+\_\+\+I\+T\+E\+M\+S\+\_\+\+F\+I\+LE}} = \char`\"{}aviailable\+\_\+items\+\_\+file.\+txt\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+ofstream \mbox{\hyperlink{class_writer_a4b441b851635a36a7fe0b720fb50695a}{out\+File}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_writer}{Writer}} Class to write to files @description\+: ~\newline
+ 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_writer_aedc04cd5fb7b4b99d3ad906fef2116ce}\label{class_writer_aedc04cd5fb7b4b99d3ad906fef2116ce}} 
+\index{Writer@{Writer}!Writer@{Writer}}
+\index{Writer@{Writer}!Writer@{Writer}}
+\doxysubsubsection{\texorpdfstring{Writer()}{Writer()}}
+{\footnotesize\ttfamily Writer\+::\+Writer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default Constructor for \mbox{\hyperlink{class_writer}{Writer}} Class 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_writer_a6d15729a0b56807fc02f429adfcd2902}\label{class_writer_a6d15729a0b56807fc02f429adfcd2902}} 
+\index{Writer@{Writer}!WriteToAvailableItemsFile@{WriteToAvailableItemsFile}}
+\index{WriteToAvailableItemsFile@{WriteToAvailableItemsFile}!Writer@{Writer}}
+\doxysubsubsection{\texorpdfstring{WriteToAvailableItemsFile()}{WriteToAvailableItemsFile()}}
+{\footnotesize\ttfamily void Writer\+::\+Write\+To\+Available\+Items\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{class_writer}{Writer}} class method to write to the available items file ~\newline
+ \mbox{\Hypertarget{class_writer_abd6a0866d074fecec1199efc43c35f9f}\label{class_writer_abd6a0866d074fecec1199efc43c35f9f}} 
+\index{Writer@{Writer}!WriteToDailyTransactionFile@{WriteToDailyTransactionFile}}
+\index{WriteToDailyTransactionFile@{WriteToDailyTransactionFile}!Writer@{Writer}}
+\doxysubsubsection{\texorpdfstring{WriteToDailyTransactionFile()}{WriteToDailyTransactionFile()}}
+{\footnotesize\ttfamily void Writer\+::\+Write\+To\+Daily\+Transaction\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{class_writer}{Writer}} Class method to write to the daily transaction file ~\newline
+ \mbox{\Hypertarget{class_writer_a4d8509f2c0cbfdc1859e8201098074fd}\label{class_writer_a4d8509f2c0cbfdc1859e8201098074fd}} 
+\index{Writer@{Writer}!WriteToUserFile@{WriteToUserFile}}
+\index{WriteToUserFile@{WriteToUserFile}!Writer@{Writer}}
+\doxysubsubsection{\texorpdfstring{WriteToUserFile()}{WriteToUserFile()}}
+{\footnotesize\ttfamily void Writer\+::\+Write\+To\+User\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{class_writer}{Writer}} class method to write to the user accounts file ~\newline
+ 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_writer_a77cf1d14243ea258128b47c8ab4d1b84}\label{class_writer_a77cf1d14243ea258128b47c8ab4d1b84}} 
+\index{Writer@{Writer}!AVAILABLE\_ITEMS\_FILE@{AVAILABLE\_ITEMS\_FILE}}
+\index{AVAILABLE\_ITEMS\_FILE@{AVAILABLE\_ITEMS\_FILE}!Writer@{Writer}}
+\doxysubsubsection{\texorpdfstring{AVAILABLE\_ITEMS\_FILE}{AVAILABLE\_ITEMS\_FILE}}
+{\footnotesize\ttfamily const string Writer\+::\+A\+V\+A\+I\+L\+A\+B\+L\+E\+\_\+\+I\+T\+E\+M\+S\+\_\+\+F\+I\+LE = \char`\"{}aviailable\+\_\+items\+\_\+file.\+txt\char`\"{}}
+
+Constant to hold the available items file ~\newline
+ \mbox{\Hypertarget{class_writer_abbfdc7e0b46e57bee79ce7628a3e2dc3}\label{class_writer_abbfdc7e0b46e57bee79ce7628a3e2dc3}} 
+\index{Writer@{Writer}!CURRENT\_USER\_ACCOUNTS\_FILE@{CURRENT\_USER\_ACCOUNTS\_FILE}}
+\index{CURRENT\_USER\_ACCOUNTS\_FILE@{CURRENT\_USER\_ACCOUNTS\_FILE}!Writer@{Writer}}
+\doxysubsubsection{\texorpdfstring{CURRENT\_USER\_ACCOUNTS\_FILE}{CURRENT\_USER\_ACCOUNTS\_FILE}}
+{\footnotesize\ttfamily const string Writer\+::\+C\+U\+R\+R\+E\+N\+T\+\_\+\+U\+S\+E\+R\+\_\+\+A\+C\+C\+O\+U\+N\+T\+S\+\_\+\+F\+I\+LE = \char`\"{}current\+\_\+user\+\_\+accounts\+\_\+file.\+txt\char`\"{}}
+
+Constant to hold the current user accounts file name ~\newline
+ \mbox{\Hypertarget{class_writer_a3222bafbd1fab99f4548e7c049ed6775}\label{class_writer_a3222bafbd1fab99f4548e7c049ed6775}} 
+\index{Writer@{Writer}!DAILY\_TRANSACTION\_FILE@{DAILY\_TRANSACTION\_FILE}}
+\index{DAILY\_TRANSACTION\_FILE@{DAILY\_TRANSACTION\_FILE}!Writer@{Writer}}
+\doxysubsubsection{\texorpdfstring{DAILY\_TRANSACTION\_FILE}{DAILY\_TRANSACTION\_FILE}}
+{\footnotesize\ttfamily const string Writer\+::\+D\+A\+I\+L\+Y\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N\+\_\+\+F\+I\+LE = \char`\"{}daily\+\_\+transaction\+\_\+file.\+txt\char`\"{}}
+
+Constant to hold the daily transaction file name ~\newline
+ \mbox{\Hypertarget{class_writer_a4b441b851635a36a7fe0b720fb50695a}\label{class_writer_a4b441b851635a36a7fe0b720fb50695a}} 
+\index{Writer@{Writer}!outFile@{outFile}}
+\index{outFile@{outFile}!Writer@{Writer}}
+\doxysubsubsection{\texorpdfstring{outFile}{outFile}}
+{\footnotesize\ttfamily ofstream Writer\+::out\+File\hspace{0.3cm}{\ttfamily [protected]}}
+
+Protected attribute to open the outfile and input data into it and close the outfile ~\newline
+ 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Ontario\+Tech/\+Year 1/\+Semester 2/\+Software quality Assurance/sqa-\/baller-\/squad-\/v2/\+Phase\#2/Writer.\+h\item 
+D\+:/\+Ontario\+Tech/\+Year 1/\+Semester 2/\+Software quality Assurance/sqa-\/baller-\/squad-\/v2/\+Phase\#2/Writer.\+cpp\end{DoxyCompactItemize}
