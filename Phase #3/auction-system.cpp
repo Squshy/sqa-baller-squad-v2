@@ -16,30 +16,44 @@
 #include <stdio.h>
 #include <string>
 #include <limits>
+#include <fstream>
 #include "Users.h"
 
 using namespace std;
 
 void Home(Users);
+void readInitialFiles(string, string);
 void Menu(Users);
 void Title();
 void PressEnterToExit();
 void ClearScreen();
 string error = "";
+string currentAccounts = "";
+string availableItems = "";
+string trans = "";
+string** accounts;
+string** items; 
 
 /**
  * Main Function Definition
  */ 
-int main() {
+int main(int argc, char *argv[]) {
 	
 	//Declarations
 	Users user;
+	if (argc != 4){
+		printf("You need 3 arguments to start the program\n");
+	}else{
+		currentAccounts = argv[1];
+		availableItems = argv[2];
+		trans = argv[3];
+	}
 
 try
 {
-	
-	Home(user);
-	PressEnterToExit();	
+	readInitialFiles(currentAccounts, availableItems);
+	//Home(user);
+	//PressEnterToExit();	
 	
 }
 // to catch the possible exceptions
@@ -178,6 +192,74 @@ void Title(){
 	cout << "==========================================" << endl
 		 	 << "      SQA Baller Squad Auction House" << endl
 		 	 << "==========================================" << endl;
+
+}
+
+void readInitialFiles(string curr, string avail){
+
+	ifstream File;
+	int i = 0;
+	string hi;
+	string getUser, getPwd, getType;
+	float getCred;
+	int count = 0;
+	File.open(curr); //opening the file
+	if (!File) {
+    cerr << "Unable to open file";
+    exit(1);   // call system to stop
+}
+	while (!File.eof()){
+		getline(File, hi);
+		count++;
+	}
+
+	accounts = new string*[count];
+	for(int i = 0; i < count; i++){
+    accounts[i] = new string[4];
+	}
+	File.clear();
+	File.seekg(0, ios::beg);
+	while (File >> getUser >> getPwd >> getType >> getCred) {
+			
+			//cout << " " + getUser;
+			accounts[i][0] = getUser;
+			accounts[i][1] = getPwd;
+			accounts[i][2] = getType;
+			accounts[i][3] = to_string(getCred);
+			cout << accounts[i][0] + " " + accounts[i][1] + " " + accounts[i][2] + " " + accounts[i][3] + "\n";
+			i++;
+
+	}
+	File.close(); //closing the file
+
+	File.open(avail); //opening the file
+	if (!File) {
+    cerr << "Unable to open file";
+    exit(1);   // call system to stop
+}
+	while (!File.eof()){
+		getline(File, hi);
+		count++;
+	}
+
+	accounts = new string*[count];
+	for(int i = 0; i < count; i++){
+    accounts[i] = new string[4];
+	}
+	File.clear();
+	File.seekg(0, ios::beg);
+	while (File >> getUser >> getPwd >> getType >> getCred) {
+			
+			//cout << " " + getUser;
+			accounts[i][0] = getUser;
+			accounts[i][1] = getPwd;
+			accounts[i][2] = getType;
+			accounts[i][3] = to_string(getCred);
+			cout << accounts[i][0] + " " + accounts[i][1] + " " + accounts[i][2] + " " + accounts[i][3] + "\n";
+			i++;
+
+	}
+	File.close(); //closing the file
 
 }
 
