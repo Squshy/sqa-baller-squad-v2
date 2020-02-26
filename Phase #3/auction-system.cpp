@@ -52,8 +52,8 @@ int main(int argc, char *argv[]) {
 try
 {
 	readInitialFiles(currentAccounts, availableItems);
-	//Home(user);
-	//PressEnterToExit();	
+	Home(user);
+	PressEnterToExit();	
 	
 }
 // to catch the possible exceptions
@@ -199,23 +199,26 @@ void readInitialFiles(string curr, string avail){
 
 	ifstream File;
 	int i = 0;
-	string hi;
+	int j = 0;
+	string dump;
+	string temp;
 	string getUser, getPwd, getType;
 	float getCred;
 	int count = 0;
+
 	File.open(curr); //opening the file
 	if (!File) {
     cerr << "Unable to open file";
-    exit(1);   // call system to stop
+    
 }
 	while (!File.eof()){
-		getline(File, hi);
+		getline(File, dump);
 		count++;
 	}
 
 	accounts = new string*[count];
-	for(int i = 0; i < count; i++){
-    accounts[i] = new string[4];
+	for(int x = 0; x < count; x++){
+    accounts[x] = new string[4];
 	}
 	File.clear();
 	File.seekg(0, ios::beg);
@@ -226,39 +229,43 @@ void readInitialFiles(string curr, string avail){
 			accounts[i][1] = getPwd;
 			accounts[i][2] = getType;
 			accounts[i][3] = to_string(getCred);
-			cout << accounts[i][0] + " " + accounts[i][1] + " " + accounts[i][2] + " " + accounts[i][3] + "\n";
+			//cout << accounts[i][0] + " " + accounts[i][1] + " " + accounts[i][2] + " " + accounts[i][3] + "\n";
 			i++;
 
 	}
 	File.close(); //closing the file
+	count = 0;
 
 	File.open(avail); //opening the file
 	if (!File) {
     cerr << "Unable to open file";
-    exit(1);   // call system to stop
+       // call system to stop
 }
 	while (!File.eof()){
-		getline(File, hi);
+		getline(File, dump);
 		count++;
 	}
 
-	accounts = new string*[count];
-	for(int i = 0; i < count; i++){
-    accounts[i] = new string[4];
+	items = new string*[count];
+	for(int z = 0; z < count; z++){
+    items[z] = new string[6];
 	}
 	File.clear();
 	File.seekg(0, ios::beg);
-	while (File >> getUser >> getPwd >> getType >> getCred) {
-			
-			//cout << " " + getUser;
-			accounts[i][0] = getUser;
-			accounts[i][1] = getPwd;
-			accounts[i][2] = getType;
-			accounts[i][3] = to_string(getCred);
-			cout << accounts[i][0] + " " + accounts[i][1] + " " + accounts[i][2] + " " + accounts[i][3] + "\n";
-			i++;
+	while (!File.eof()) {
+
+		getline(File, temp);
+			items[j][0] = temp.substr(0, 4);
+			items[j][1] = temp.substr(5, 19);
+			items[j][2] = temp.substr(24, 16);
+			items[j][3] = temp.substr(40, 15);
+			items[j][4] = temp.substr(55, 4);
+			items[j][5] = temp.substr(60, 8);
+			j++;
 
 	}
+	cout << items[0][0] + items[0][1] + items[0][2] + items[0][3] + items[0][4] + items[0][5] + "\n";
+
 	File.close(); //closing the file
 
 }
