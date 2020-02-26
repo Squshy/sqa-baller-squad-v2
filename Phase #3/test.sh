@@ -23,7 +23,7 @@ do
         touch $t/trans.out
 ​
         # Run the script and dump the output in the folder to be compared
-        ./ticket-seller tests/users.ua tests/stock.at $t/trans.out < $t/test.inp
+        ./auction-system.exe current_user_accounts_file.txt available_items_file.txt $t/trans.out < $t/test.inp
 ​
 ​
 ​

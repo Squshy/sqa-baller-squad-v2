@@ -16,6 +16,14 @@ Writer::Writer(){
 
 void Writer::WriteToAvailableItemsFile(){
 
+    outFile.open(DAILY_TRANSACTION_FILE);
+
+    
+
+
+
+    outFile.close();
+
 }
 
 void Writer::WriteToDailyTransactionFile(){

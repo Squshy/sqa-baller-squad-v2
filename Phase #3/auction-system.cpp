@@ -32,7 +32,8 @@ string currentAccounts = "";
 string availableItems = "";
 string trans = "";
 string** accounts;
-string** items; 
+string** items;
+int userCount; 
 
 /**
  * Main Function Definition
@@ -92,7 +93,7 @@ void Home(Users user){
 	    if(choice.compare(transactionlogin) == 0 || choice.compare(transactionLogin) == 0){
 			ClearScreen();
 			Title();
-     		login = user.Login();
+     		login = user.Login(accounts, userCount);
 			 if(login == true){
 				 Menu(user);
 				 ClearScreen();
@@ -213,11 +214,11 @@ void readInitialFiles(string curr, string avail){
 }
 	while (!File.eof()){
 		getline(File, dump);
-		count++;
+		userCount++;
 	}
 
-	accounts = new string*[count];
-	for(int x = 0; x < count; x++){
+	accounts = new string*[userCount];
+	for(int x = 0; x < userCount; x++){
     accounts[x] = new string[4];
 	}
 	File.clear();
@@ -234,7 +235,6 @@ void readInitialFiles(string curr, string avail){
 
 	}
 	File.close(); //closing the file
-	count = 0;
 
 	File.open(avail); //opening the file
 	if (!File) {

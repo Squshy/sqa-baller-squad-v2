@@ -14,7 +14,7 @@
 Users::Users(){}
 
 
-bool Users::Login(){
+bool Users::Login(string** users, int userCount){
 	string username = "";
 	string password = "";
 	bool validation = false;
@@ -25,43 +25,20 @@ bool Users::Login(){
      	cin >> password;
 		setUserName(username);
 		setPassword(password);
-		validation = Users::ValidateCredentials();
-
-		return validation;
-     	
-}
-
-bool Users::ValidateCredentials(){
-
-	//Declarations
-	ifstream File;
-	string getUser, getPwd, getType;
-	float getCred;
-	bool exists = false;
-
-	File.open("current_user_accounts_file.txt"); //opening the file
-	
-	//getting the user info from the file
-	while (File >> getUser >> getPwd >> getType >> getCred) {
-
-
-		if (getUserName().compare(getUser) == 0 && getPassword().compare(getPwd) == 0){
-			exists = true;
-			setUserType(getType);
-			setCredits(getCred);
+		for(int i = 0; i < userCount; i++){
+			cout << users[i][0];
+			if (getUserName().compare(users[i][0]) == 0 && getPassword().compare(users[i][1]) == 0){
+			//exists = true;
+			setUserType(users[i][2]);
+			setCredits(stof(users[i][3]));
+			validation = true;
 			break;
 		}
 
-	}
-
-	File.close(); //closing the file
-
-	if(exists == true){
-		return true;
-	}else{
-		return false;
-	}
-
+		}
+	
+		return validation;
+     	
 }
 
 void Users::ChangePassword(){

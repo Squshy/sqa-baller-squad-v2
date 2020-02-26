@@ -102,11 +102,7 @@ class Users{
 		/**
 		 * Users Class Method for Login
 		 */ 
-		bool Login();
-		/**
-		 * Users Class Method for validating their credentials on login
-		 */ 
-		bool ValidateCredentials();
+		bool Login(string**, int);
 		/**
 		 * Users Class Method to change the user password
 		 */ 
