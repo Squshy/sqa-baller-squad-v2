@@ -35,7 +35,7 @@ string trans = "";
 string** accounts;
 string** items;
 int userCount; 
-int itemCount;
+int itemCount = 0;
 
 /**
  * Main Function Definition
@@ -140,7 +140,6 @@ void Menu(Users user){
 	const string admin = "AA";
 	const string sellStandardUser = "SS";
 	bool ifLogout = true;
-	string bidder;
 	ClearScreen();
 	std::cin.ignore( std::numeric_limits <std::streamsize> ::max(), '\n' );
 	Title();
@@ -168,10 +167,8 @@ void Menu(Users user){
 			cout << "\nYeehaw Enter Command: ";
 			getline(cin, choice);
 		if(choice.compare("bid") == 0){
-			// if(choice.compare(transactionlogin) == 0 || choice.compare(transactionLogin) == 0){
-			// 	ClearScreen();
-			// 	Title();
-			// 	login = user.Login(accounts, userCount);
+			std::cout << "Item Count Test: " << itemCount;
+			//itemCount is not being sent in correctly
 			Bid(items, itemCount);
 		}
 
@@ -283,7 +280,6 @@ void readInitialFiles(string curr, string avail){
 	cout << items[0][0] + items[0][1] + items[0][2] + items[0][3] + items[0][4] + items[0][5] + "\n";
 
 	File.close(); //closing the file
-
 }
 
 

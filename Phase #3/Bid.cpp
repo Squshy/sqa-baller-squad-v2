@@ -17,19 +17,18 @@ Bid::Bid(string** items, int itemCount){
     string itemName = "";
     bool itemCheck = false;
     bool itemMatch = false;
+    bool itemSelectCheck = false;
     bool initialBidConfirmation = false;
     int itemSelect = 0;
     int itemLength = 0;
     string itemNameListCut;
     string** bidList;
-    int bidListCount;
-    bool itemSelectCheck = 0;
+    int bidListCount = 0;
     //Don't show any items that belong to user in the list?
     //Loop until user finishes bid 
     //While loop until user to inputs valid item name
     std::cout << "\nType \"exit\" to return to main menu";
     while (itemMatch == false){
-        std::cout <<"Test1";
         while (itemCheck == false){
             std::cout << "\nEnter an Item name:";
             getline(cin, itemName);
@@ -50,22 +49,22 @@ Bid::Bid(string** items, int itemCount){
 
         //Compare input to the item file in a loop and add it into an array if matches
         itemLength = itemName.length();
-        printf("Test 2: %i", itemLength);
         //Gets the total number of matching items, which will be used for the array
-        std::cout << "\nShould Output Dragon scimitar: " + items[0][1]; // Should output DRAGON SCIMITAR
-        std::cout << "\n Outputting Item Count: " + itemCount; // Only 1 item in so far
+        // std::cout << "\nItem Count Test in Bid cpp: " << itemCount; // Only 1 item in so far
         for (int i = 0; i < itemCount; i++){
             itemNameListCut = items[i][1].substr(0,itemLength);
-            std::cout << "\n" + itemNameListCut;
-            if(itemName.compare(itemNameListCut) == 1){
+            // std::cout << "\nItem Name List Cut Test in Bid cpp: " << itemNameListCut;
+            if(itemName.compare(itemNameListCut) == 0){
                 bidListCount++;
-                std::cout << "\nOutputting Items: "+ items[i][1];
+                // std::cout << "\nOutputting Items: "+ items[i][1];
             }
+            // std::cout << "\noof";
         }
-        printf("\nTest 3: %i", bidListCount);
+
+        // std::cout << "BidListCount Test in Bid cpp:asdasd " << bidListCount;
         //If itemCount is 0 then that means there are no matches and will prompt user to start over
-        if (bidListCount = 0){
-            std::cout << "There are no matching results. Please enter a new item name.\n";
+        if (bidListCount == 0){
+            std::cout << "\nThere are no matching results. Please enter a new item name.";
             itemCheck = false; //reset itemNameCheck
         }else{
             itemMatch = true;
@@ -82,12 +81,12 @@ Bid::Bid(string** items, int itemCount){
             itemNameListCut = items[i][1].substr(0,itemLength);
             //Get Item name and current bid for it and if it matches
             //TODO: Check if seller's name is same as current user and don't add it in bidList
-            if(itemName.compare(itemNameListCut) == 1){
+            if(itemName.compare(itemNameListCut) == 0){
                 bidList[i][0] = items[i][1]; //Item Name
                 bidList[i][1] = items[i][2]; //Seller's name
                 bidList[i][2] = items[i][4]; //Remaining days
                 bidList[i][3] = items[i][5]; //Current Bid
-	            cout << "Test 4:" + bidList[i][0] + bidList[i][1] + bidList[i][2] + bidList[i][3] + "\n";
+	            cout << "\nTest 4:" + bidList[i][0] + bidList[i][1] + bidList[i][2] + bidList[i][3] + "\n";
             }
         }
     
@@ -100,12 +99,12 @@ Bid::Bid(string** items, int itemCount){
         std::cout << "Test 5";
         //Prompt user to select a number from a list and to exit type -1
         //Check if the item belongs to a user as they cannot bid on their own items and boot them back to item list
-        while(itemSelectCheck = 0){
+        while(itemSelectCheck = false){
             std::cout << "\nEnter a number from the list: ";
             // getline(cin, itemSelect);
 
             if(itemSelect < bidListCount || itemSelect >= -1){
-                std::cout << "error input is not from list, pleae try again";
+                std::cout << "error input is not from list, please try again";
             } else {
                 itemSelectCheck = 1;
             }
