@@ -21,7 +21,6 @@
 #include "AuctionLib.h"
 
 using namespace std;
-using namespace AuctionLib;
 
 void Home(Users);
 void readInitialFiles(string, string);
@@ -90,7 +89,7 @@ void Home(Users user){
 		cout << "\nEnter Command: ";
 		getline(cin, choice);
 	
-	    if(choice.compare(LOGIN) == 0){
+	    if(ToLower(choice).compare(LOGIN) == 0){
 			ClearScreen();
 			Title();
      		login = user.Login(accounts, userCount);
@@ -125,12 +124,11 @@ void Home(Users user){
  */ 
 void Menu(Users user){
 	string choice = "";
-	const string exit = "logout";
-	const string Exit = "Logout";
-	const string fullstandardUser = "FS";
-	const string buyStandardUser = "BS";
-	const string admin = "AA";
-	const string sellStandardUser = "SS";
+	const string LOGOUT = "logout";
+	const string FULL_STANDARD = "FS";
+	const string BUY_STANDARD = "BS";
+	const string ADMIN = "AA";
+	const string SELL_STANDARD = "SS";
 	bool ifLogout = true;
 	ClearScreen();
 	std::cin.ignore( std::numeric_limits <std::streamsize> ::max(), '\n' );
@@ -138,26 +136,26 @@ void Menu(Users user){
 	cout << "\nWelcome " + user.getUserName() + "! Glad to see you are back :)";
 	while(ifLogout == true){
 
-		if(user.getUserType().compare(fullstandardUser) == 0){
+		if(ToLower(user.getUserType()).compare(FULL_STANDARD) == 0){
 
 			cout << "\nEnter Command: ";
 			getline(cin, choice);
 
-		}else if(user.getUserType().compare(buyStandardUser) == 0){
+		}else if(ToLower(user.getUserType()).compare(BUY_STANDARD) == 0){
 			cout << "\nEnter Command: ";
 			getline(cin, choice);
 
-		}else if(user.getUserType().compare(sellStandardUser) == 0){
+		}else if(ToLower(user.getUserType()).compare(SELL_STANDARD) == 0){
 			cout << "\nEnter Command: ";
 			getline(cin, choice);
 
-		}else if(user.getUserType().compare(admin) == 0){
+		}else if(ToLower(user.getUserType()).compare(ADMIN) == 0){
 			cout << "\nEnter Command: ";
 			getline(cin, choice);
 
 		}
 
-		if(choice.compare(exit) == 0 || choice.compare(Exit) == 0){
+		if(ToLower(choice).compare(LOGOUT) == 0){
 			
 			ifLogout = false;
 			

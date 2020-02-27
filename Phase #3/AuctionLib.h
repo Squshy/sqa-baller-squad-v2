@@ -12,8 +12,6 @@
 #ifndef _AUCTIONLIB_H
 #define _AUCTIONLIB_H
 
-namespace AuctionLib {
-    std::string ToLower(std::string str);
-}
+std::string ToLower(std::string str);
 
 #endif
