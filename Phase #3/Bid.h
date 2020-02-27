@@ -38,7 +38,12 @@ class Bid : public Items{
          * Default Constructor For Bid class
          */ 
         Bid(string**, int);
-        
+
+        /**
+         * Checks if string is an integer or not
+         */
+        bool IsIntegerNumber(std::string str);
+
         /**
          * Constant to hold the minimum allowable percentage higher than the previous
          * bid    

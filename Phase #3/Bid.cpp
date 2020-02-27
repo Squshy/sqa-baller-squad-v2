@@ -104,16 +104,19 @@ Bid::Bid(string** items, int itemCount){
         //Prompt user to select a number from a list and to exit type -1
         //Check if the item belongs to a user as they cannot bid on their own items and boot them back to item list
         while(itemSelectCheck == false){
-            std::cout << "\nEnter a number from the list: "; // Something catastrophic is happening here
+            std::cout << "\nEnter a number from the list: ";
             getline(cin, buffer); // getline only takes in string not integers
             
-            itemSelect = std::stoi(buffer);
-            if(itemSelect < bidListCount || itemSelect >= 0){
-                std::cout << "You have selected from List number : %i", buffer;
+            if(IsIntegerNumber(buffer)){
+                itemSelect = std::stoi(buffer);
+            }
+            // Need to validate against alphabetic characters first then convert to integer
+            if(itemSelect < bidListCount && itemSelect >= 0){
+                std::cout << "You have selected from List number : " << buffer;
                 itemSelectCheck = true;
             } 
             else {
-                std::cout << "error: input needs to be between 1 and %i and numeric only, please try again", bidListCount;
+                std::cout << "error: input needs to be between 0 and " << bidListCount << "and numeric only, please try again";
             }
         }
         //Display current bid price
@@ -146,4 +149,22 @@ float Bid::CalculateLowestBid(){
 
 void Bid::BidOnItem(){
     
+}
+
+/**
+ * Checks to see if the string is a valid integer number
+ */
+bool IsIntegerNumber(std::string str) {
+    bool hasInteger = false;
+    int i = 0;
+    if(str[0] == '-') i = 1;    // If the number is negative
+    while(str[i]){
+        if(!isdigit(str[i])) {
+            if(str[i] == '.' && hasInteger == false) hasInteger = true; // If the character is a decimal and the loop has not already encountered a decimal: 1.000
+            else if(str[i] == '.' && hasInteger == true) return false;  // If the character is a decimal and the loop has encountered a decimal: 1.0.00
+            else return false;  // Character is not a digit or a decimal: 10ab
+        }
+        i++;
+    }
+    return true;
 }
