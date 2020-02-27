@@ -37,7 +37,7 @@ class Bid : public Items{
         /**
          * Default Constructor For Bid class
          */ 
-        Bid();
+        Bid(string**, int);
         
         /**
          * Constant to hold the minimum allowable percentage higher than the previous

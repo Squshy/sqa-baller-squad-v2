@@ -18,6 +18,7 @@
 #include <limits>
 #include <fstream>
 #include "Users.h"
+#include "Bid.h"
 
 using namespace std;
 
@@ -34,6 +35,7 @@ string trans = "";
 string** accounts;
 string** items;
 int userCount; 
+int itemCount;
 
 /**
  * Main Function Definition
@@ -138,29 +140,39 @@ void Menu(Users user){
 	const string admin = "AA";
 	const string sellStandardUser = "SS";
 	bool ifLogout = true;
+	string bidder;
 	ClearScreen();
 	std::cin.ignore( std::numeric_limits <std::streamsize> ::max(), '\n' );
 	Title();
 	cout << "\nWelcome " + user.getUserName() + "! Glad to see you are back :)";
 	while(ifLogout == true){
+//Commented out for testing bid
+		// if(user.getUserType().compare(fullstandardUser) == 0){
 
-		if(user.getUserType().compare(fullstandardUser) == 0){
+		// 	cout << "\nEnter Command: ";
+		// 	getline(cin, choice);
 
-			cout << "\nEnter Command: ";
+		// }else if(user.getUserType().compare(buyStandardUser) == 0){
+		// 	cout << "\nEnter Command: ";
+		// 	getline(cin, choice);
+
+		// }else if(user.getUserType().compare(sellStandardUser) == 0){
+		// 	cout << "\nEnter Command: ";
+		// 	getline(cin, choice);
+
+		// }else if(user.getUserType().compare(admin) == 0){
+		// 	cout << "\nEnter Command: ";
+		// 	getline(cin, choice);
+
+		// }
+			cout << "\nYeehaw Enter Command: ";
 			getline(cin, choice);
-
-		}else if(user.getUserType().compare(buyStandardUser) == 0){
-			cout << "\nEnter Command: ";
-			getline(cin, choice);
-
-		}else if(user.getUserType().compare(sellStandardUser) == 0){
-			cout << "\nEnter Command: ";
-			getline(cin, choice);
-
-		}else if(user.getUserType().compare(admin) == 0){
-			cout << "\nEnter Command: ";
-			getline(cin, choice);
-
+		if(choice.compare("bid") == 0){
+			// if(choice.compare(transactionlogin) == 0 || choice.compare(transactionLogin) == 0){
+			// 	ClearScreen();
+			// 	Title();
+			// 	login = user.Login(accounts, userCount);
+			Bid(items, itemCount);
 		}
 
 		if(choice.compare(exit) == 0 || choice.compare(Exit) == 0){
@@ -169,7 +181,6 @@ void Menu(Users user){
 			
 		}
 		//std::cin.ignore( std::numeric_limits <std::streamsize> ::max(), '\n' );
-
 	} 
 
 }
@@ -211,7 +222,6 @@ void readInitialFiles(string curr, string avail){
 	string temp;
 	string getUser, getPwd, getType;
 	float getCred;
-	int count = 0;
 
 	File.open(curr); //opening the file
 	if (!File) {
@@ -249,11 +259,11 @@ void readInitialFiles(string curr, string avail){
 }
 	while (!File.eof()){
 		getline(File, dump);
-		count++;
+		itemCount++;
 	}
 
-	items = new string*[count];
-	for(int z = 0; z < count; z++){
+	items = new string*[itemCount];
+	for(int z = 0; z < itemCount; z++){
     items[z] = new string[6];
 	}
 	File.clear();
@@ -261,12 +271,12 @@ void readInitialFiles(string curr, string avail){
 	while (!File.eof()) {
 
 		getline(File, temp);
-			items[j][0] = temp.substr(0, 4);
-			items[j][1] = temp.substr(5, 19);
-			items[j][2] = temp.substr(24, 16);
-			items[j][3] = temp.substr(40, 15);
-			items[j][4] = temp.substr(55, 4);
-			items[j][5] = temp.substr(60, 8);
+			items[j][0] = temp.substr(0, 4); // Item ID
+			items[j][1] = temp.substr(5, 19); // Item Name
+			items[j][2] = temp.substr(24, 16); // Seller name
+			items[j][3] = temp.substr(40, 15);  // Current Bidder's name
+			items[j][4] = temp.substr(55, 4); // Remaining days
+			items[j][5] = temp.substr(60, 8); // Current bid
 			j++;
 
 	}
