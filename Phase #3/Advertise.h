@@ -32,6 +32,7 @@ class Advertise : public Items{
     private:
     /** Private Attribute for Remaining Days of the Item */
         short remainingDays;
+        Items item;
 
     public:
 
@@ -43,8 +44,8 @@ class Advertise : public Items{
         /**
 		 * Setter for Remaining Days private attribute
 		 */
-		void setRemainingDays(short remaining){
-			remainingDays = remaining;
+		void setRemainingDays(short days){
+			remainingDays = days;
 		}
 
 		/**

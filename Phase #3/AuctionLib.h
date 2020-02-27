@@ -14,4 +14,6 @@
 
 std::string ToLower(std::string str);
 
+bool IsNumber(std::string str);
+
 #endif
