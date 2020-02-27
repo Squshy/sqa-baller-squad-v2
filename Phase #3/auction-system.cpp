@@ -4,7 +4,7 @@
 * @author Paul Kerrigan, Henry Zheng, Calvin Lapp
 * @since January 24, 2020
 * @version  1.0
-* @name main.cpp
+* @name auction-system.cpp
 */
 
 #include <iostream>       
@@ -18,8 +18,10 @@
 #include <limits>
 #include <fstream>
 #include "Users.h"
+#include "AuctionLib.h"
 
 using namespace std;
+using namespace AuctionLib;
 
 void Home(Users);
 void readInitialFiles(string, string);
@@ -74,10 +76,8 @@ catch(const exception& ex)
 void Home(Users user){
 	
 	string choice = "";
-	const string exit = "exit";
-	const string Exit = "Exit";
-	const string transactionlogin = "login";
-	const string transactionLogin = "Login";
+	const string EXIT = "exit";
+	const string LOGIN = "login";
 	bool login;
 	bool ifExit = true;
 	
@@ -90,7 +90,7 @@ void Home(Users user){
 		cout << "\nEnter Command: ";
 		getline(cin, choice);
 	
-	    if(choice.compare(transactionlogin) == 0 || choice.compare(transactionLogin) == 0){
+	    if(choice.compare(LOGIN) == 0){
 			ClearScreen();
 			Title();
      		login = user.Login(accounts, userCount);
@@ -102,7 +102,7 @@ void Home(Users user){
 				 error = "\nYour Username or Password were entered incorrectly. Please Try again!\n";
 			 }
 			
-     	}else if(choice.compare(exit) == 0 || choice.compare(Exit) == 0){
+     	}else if(ToLower(choice).compare(EXIT) == 0){
      		ifExit = false;
      	}else if(choice.find("/") != std::string::npos || choice.find(" ") != std::string::npos){
      		ClearScreen();
@@ -190,8 +190,8 @@ void ClearScreen()
  */  
 void Title(){
 
-	cout << "==========================================" << endl
-		 	 << "      SQA Baller Squad Auction House" << endl
+	cout     << "==========================================" << endl
+		 	 << "      SQA Baller Squad Auction House"       << endl
 		 	 << "==========================================" << endl;
 
 }
