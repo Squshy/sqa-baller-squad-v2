@@ -4,7 +4,7 @@
 * @author Paul Kerrigan, Henry Zheng, Calvin Lapp
 * @since January 24, 2020
 * @version  1.0
-* @name main.cpp
+* @name auction-system.cpp
 */
 
 #include <iostream>       
@@ -18,6 +18,8 @@
 #include <limits>
 #include <fstream>
 #include "Users.h"
+#include "Advertise.h"
+#include "AuctionLib.h"
 #include "Bid.h"
 
 using namespace std;
@@ -76,12 +78,9 @@ catch(const exception& ex)
 void Home(Users user){
 	
 	string choice = "";
-	const string exit = "exit";
-	const string Exit = "Exit";
-	const string transactionlogin = "login";
-	const string transactionLogin = "Login";
 	const string CREATE = "create";
-	const string CREATE1 = "Create";
+	const string EXIT = "exit";
+	const string LOGIN = "login";
 	bool login;
 	bool ifExit = true;
 	
@@ -94,7 +93,7 @@ void Home(Users user){
 		cout << "\nEnter Command: ";
 		getline(cin, choice);
 	
-	    if(choice.compare(transactionlogin) == 0 || choice.compare(transactionLogin) == 0){
+	    if(ToLower(choice).compare(LOGIN) == 0){
 			ClearScreen();
 			Title();
      		login = user.Login(accounts, userCount);
@@ -133,12 +132,12 @@ void Home(Users user){
  */ 
 void Menu(Users user){
 	string choice = "";
-	const string exit = "logout";
-	const string Exit = "Logout";
-	const string fullstandardUser = "FS";
-	const string buyStandardUser = "BS";
-	const string admin = "AA";
-	const string sellStandardUser = "SS";
+	const string LOGOUT = "logout";
+	const string FULL_STANDARD = "FS";
+	const string BUY_STANDARD = "BS";
+	const string ADMIN = "AA";
+	const string SELL_STANDARD = "SS";
+    const string ADVERTISE = "advertise";
 	bool ifLogout = true;
 	ClearScreen();
 	std::cin.ignore( std::numeric_limits <std::streamsize> ::max(), '\n' );
@@ -148,23 +147,26 @@ void Menu(Users user){
 //Commented out for testing bid
 		// if(user.getUserType().compare(fullstandardUser) == 0){
 
-		// 	cout << "\nEnter Command: ";
-		// 	getline(cin, choice);
+		if(user.getUserType().compare(FULL_STANDARD) == 0){
 
-		// }else if(user.getUserType().compare(buyStandardUser) == 0){
-		// 	cout << "\nEnter Command: ";
-		// 	getline(cin, choice);
+			cout << "\nFS Enter Command: ";
+			getline(cin, choice);
 
-		// }else if(user.getUserType().compare(sellStandardUser) == 0){
-		// 	cout << "\nEnter Command: ";
-		// 	getline(cin, choice);
+            if(choice == "ADVERTISE") {
+                Advertise ad;
+                ad.AdvertiseItem();
+            }
 
-		// }else if(user.getUserType().compare(admin) == 0){
-		// 	cout << "\nEnter Command: ";
-		// 	getline(cin, choice);
+		}else if(user.getUserType().compare(BUY_STANDARD) == 0){
+			cout << "\nBS Enter Command: ";
+			getline(cin, choice);
 
-		// }
-			cout << "\nYeehaw Enter Command: ";
+		}else if(user.getUserType().compare(SELL_STANDARD) == 0){
+			cout << "\nSS Enter Command: ";
+			getline(cin, choice);
+
+		}else if(user.getUserType().compare(ADMIN) == 0){
+			cout << "\nAA Enter Command: ";
 			getline(cin, choice);
 		if(choice.compare("bid") == 0){
 			std::cout << "Item Count Test: " << itemCount;
@@ -172,7 +174,7 @@ void Menu(Users user){
 			Bid(items, itemCount);
 		}
 
-		if(choice.compare(exit) == 0 || choice.compare(Exit) == 0){
+		if(ToLower(choice).compare(LOGOUT) == 0){
 			
 			ifLogout = false;
 			
@@ -204,8 +206,8 @@ void ClearScreen()
  */  
 void Title(){
 
-	cout << "==========================================" << endl
-		 	 << "      SQA Baller Squad Auction House" << endl
+	cout     << "==========================================" << endl
+		 	 << "      SQA Baller Squad Auction House"       << endl
 		 	 << "==========================================" << endl;
 
 }
