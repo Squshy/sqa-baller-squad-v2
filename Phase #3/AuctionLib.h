@@ -14,6 +14,10 @@
 
 std::string ToLower(std::string str);
 
-bool IsNumber(std::string str);
+bool IsDecimalNumber(std::string str);
+bool IsInteger(std::string str);
+
+void Highlight();
+void LightHighlight();
 
 #endif

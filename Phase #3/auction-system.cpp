@@ -18,6 +18,7 @@
 #include <limits>
 #include <fstream>
 #include "Users.h"
+#include "Advertise.h"
 #include "AuctionLib.h"
 
 using namespace std;
@@ -129,6 +130,7 @@ void Menu(Users user){
 	const string BUY_STANDARD = "BS";
 	const string ADMIN = "AA";
 	const string SELL_STANDARD = "SS";
+    const string ADVERTISE = "advertise";
 	bool ifLogout = true;
 	ClearScreen();
 	std::cin.ignore( std::numeric_limits <std::streamsize> ::max(), '\n' );
@@ -136,21 +138,26 @@ void Menu(Users user){
 	cout << "\nWelcome " + user.getUserName() + "! Glad to see you are back :)";
 	while(ifLogout == true){
 
-		if(ToLower(user.getUserType()).compare(FULL_STANDARD) == 0){
+		if(user.getUserType().compare(FULL_STANDARD) == 0){
 
-			cout << "\nEnter Command: ";
+			cout << "\nFS Enter Command: ";
 			getline(cin, choice);
 
-		}else if(ToLower(user.getUserType()).compare(BUY_STANDARD) == 0){
-			cout << "\nEnter Command: ";
+            if(choice == "ADVERTISE") {
+                Advertise ad;
+                ad.AdvertiseItem();
+            }
+
+		}else if(user.getUserType().compare(BUY_STANDARD) == 0){
+			cout << "\nBS Enter Command: ";
 			getline(cin, choice);
 
-		}else if(ToLower(user.getUserType()).compare(SELL_STANDARD) == 0){
-			cout << "\nEnter Command: ";
+		}else if(user.getUserType().compare(SELL_STANDARD) == 0){
+			cout << "\nSS Enter Command: ";
 			getline(cin, choice);
 
-		}else if(ToLower(user.getUserType()).compare(ADMIN) == 0){
-			cout << "\nEnter Command: ";
+		}else if(user.getUserType().compare(ADMIN) == 0){
+			cout << "\nAA Enter Command: ";
 			getline(cin, choice);
 
 		}
