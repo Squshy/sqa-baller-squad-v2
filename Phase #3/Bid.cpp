@@ -15,12 +15,14 @@ Bid::Bid(string** items, int itemCount){
     const float MAX_BID = 999.99f;
 
     string itemName = "";
+    string buffer = "";
     bool itemCheck = false;
     bool itemMatch = false;
     bool itemSelectCheck = false;
     bool initialBidConfirmation = false;
     int itemSelect = 0;
     int itemLength = 0;
+    int j = 0; // itterates the bidlist for each match
     string itemNameListCut;
     string** bidList;
     int bidListCount = 0;
@@ -69,44 +71,49 @@ Bid::Bid(string** items, int itemCount){
         }else{
             itemMatch = true;
         }
-    }
+    } cout << "\nPast bidlistCount"; // Breaks for runite   
+        std::cout << bidListCount;
         // 2D array for the bidlist to contain item name and current bid on it
         bidList = new string*[bidListCount];
         for (int i = 0; i < bidListCount; i++){
             bidList[i] = new string[4];
         }
-
+        cout << "\nPast bidlist\n";
         //Now we can put the item name, seller's name, remaining days and current bid inside with this defined array
         for (int i = 0; i < itemCount; i++){
             itemNameListCut = items[i][1].substr(0,itemLength);
+            // std::cout << "\n" << itemNameListCut; 
             //Get Item name and current bid for it and if it matches
             //TODO: Check if seller's name is same as current user and don't add it in bidList
-            if(itemName.compare(itemNameListCut) == 0){
-                bidList[i][0] = items[i][1]; //Item Name
-                bidList[i][1] = items[i][2]; //Seller's name
-                bidList[i][2] = items[i][4]; //Remaining days
-                bidList[i][3] = items[i][5]; //Current Bid
-	            cout << "\nTest 4:" + bidList[i][0] + bidList[i][1] + bidList[i][2] + bidList[i][3] + "\n";
+            if(itemName.compare(itemNameListCut) == 0){ //We need i on the items array but we want to increment 
+                bidList[j][0] = items[i][1]; //Item Name
+                bidList[j][1] = items[i][2]; //Seller's name
+                bidList[j][2] = items[i][4]; //Remaining days
+                bidList[j][3] = items[i][5]; //Current Bid
+	            // cout << bidList[i][0] + bidList[i][1] + bidList[i][2] + bidList[i][3] + "\n";
+                j++;
             }
         }
     
         //Do another for loop and print out each item with a cooresponding number for user to input, the name and the current bid per line
         // Calculates the number of elements inside an array
-        int arraySize = (sizeof(bidList)/sizeof( bidList[0]));
-        for (int i = 0; i < arraySize; i++){
-            std::cout << ("%i. %s %s %s %s", bidList[i][0], bidList[i][1], bidList[i][2], bidList[i][3]) << endl;
+        for (int i = 0; i < bidListCount; i++){
+            std::cout << "\n" << i << ". " << bidList[i][0] << " " << bidList[i][1] << " " << bidList[i][2] << " " << bidList[i][3];
         }
-        std::cout << "Test 5";
+        cout << "\nPast Displaying results";
         //Prompt user to select a number from a list and to exit type -1
         //Check if the item belongs to a user as they cannot bid on their own items and boot them back to item list
-        while(itemSelectCheck = false){
-            std::cout << "\nEnter a number from the list: ";
-            // getline(cin, itemSelect);
-
-            if(itemSelect < bidListCount || itemSelect >= -1){
-                std::cout << "error input is not from list, please try again";
-            } else {
-                itemSelectCheck = 1;
+        while(itemSelectCheck == false){
+            std::cout << "\nEnter a number from the list: "; // Something catastrophic is happening here
+            getline(cin, buffer); // getline only takes in string not integers
+            
+            itemSelect = std::stoi(buffer);
+            if(itemSelect < bidListCount || itemSelect >= 0){
+                std::cout << "You have selected from List number : %i", buffer;
+                itemSelectCheck = true;
+            } 
+            else {
+                std::cout << "error: input needs to be between 1 and %i and numeric only, please try again", bidListCount;
             }
         }
         //Display current bid price
