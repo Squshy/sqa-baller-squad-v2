@@ -9,6 +9,7 @@
 
 #include "Bid.h"
 #include <string>
+#include "AuctionLib.h"
 
 Bid::Bid(string** items, int itemCount){
     const short MAX_ITEM_NAME_LENGTH = 19;
@@ -20,8 +21,13 @@ Bid::Bid(string** items, int itemCount){
     bool itemMatch = false;
     bool itemSelectCheck = false;
     bool initialBidConfirmation = false;
+    bool bidCheck = false;
+    bool alphanumericCheck = false;
+    bool bidAlphanumericCheck = false;
     int itemSelect = 0;
     int itemLength = 0;
+    float minimumPrice = 0.0;
+    float theBid = 0.0;
     int j = 0; // itterates the bidlist for each match
     string itemNameListCut;
     string** bidList;
@@ -82,6 +88,7 @@ Bid::Bid(string** items, int itemCount){
         //Now we can put the item name, seller's name, remaining days and current bid inside with this defined array
         for (int i = 0; i < itemCount; i++){
             itemNameListCut = items[i][1].substr(0,itemLength);
+
             // std::cout << "\n" << itemNameListCut; 
             //Get Item name and current bid for it and if it matches
             //TODO: Check if seller's name is same as current user and don't add it in bidList
@@ -90,52 +97,87 @@ Bid::Bid(string** items, int itemCount){
                 bidList[j][1] = items[i][2]; //Seller's name
                 bidList[j][2] = items[i][4]; //Remaining days
                 bidList[j][3] = items[i][5]; //Current Bid
-	            // cout << bidList[i][0] + bidList[i][1] + bidList[i][2] + bidList[i][3] + "\n";
+	            // cout << bidList[j][0] + bidList[j][1] + bidList[j][2] + bidList[j][3] + "\n";
                 j++;
             }
         }
-    
         //Do another for loop and print out each item with a cooresponding number for user to input, the name and the current bid per line
         // Calculates the number of elements inside an array
         for (int i = 0; i < bidListCount; i++){
             std::cout << "\n" << i << ". " << bidList[i][0] << " " << bidList[i][1] << " " << bidList[i][2] << " " << bidList[i][3];
         }
         cout << "\nPast Displaying results";
-        //Prompt user to select a number from a list and to exit type -1
-        //Check if the item belongs to a user as they cannot bid on their own items and boot them back to item list
+        // Prompt user to select a number from a list and to exit type -1
+        // Check if the item belongs to a user as they cannot bid on their own items and boot them back to item list
         while(itemSelectCheck == false){
-            std::cout << "\nEnter a number from the list: ";
-            getline(cin, buffer); // getline only takes in string not integers
-            
-            if(IsIntegerNumber(buffer)){
-                itemSelect = std::stoi(buffer);
+            while(alphanumericCheck == false){
+                std::cout << "\nEnter a number from the list: ";
+                getline(cin, buffer);
+                
+                if(IsInteger(buffer)){
+                    itemSelect = std::stoi(buffer);
+                    alphanumericCheck = true;
+                }else {
+                    std::cout << "\nError: Input needs to be numeric";
+                }
             }
             // Need to validate against alphabetic characters first then convert to integer
             if(itemSelect < bidListCount && itemSelect >= 0){
-                std::cout << "You have selected from List number : " << buffer;
+                std::cout << "\nYou have selected from List number: " << buffer;
                 itemSelectCheck = true;
             } 
             else {
-                std::cout << "error: input needs to be between 0 and " << bidListCount << "and numeric only, please try again";
+                std::cout << "error: input needs to be between 0 and " << bidListCount << " and numeric only, please try again";
+                alphanumericCheck = false;
             }
         }
+        minimumPrice = (std::stof(bidList[itemSelect][3]));
+        minimumPrice =  CalculateLowestBid(minimumPrice);
         //Display current bid price
-        std::cout << ("\nCurrent Price: %f", bidList[itemSelect][3]);
+        std::cout << "\nCurrent Price: " << bidList[itemSelect][3];
+        std::cout << "\nMinimum Bid Price: " << minimumPrice;
+        std::cout << "\nWould you like to bid on this? (Yes/No): ";
+
         //Ask user if they would like to bid on it
-        std::cout << "\nWould you like to bid on this? (Yes/No)";
-        // while (initialBidConfirmation = 0){
-        //     cin >> userPrompt;
-            
-        //     if (userPrompt == "Yes" || "yes"){
-        //         //Do the bid
-        //         initialBidConfirmation =1;
-        //     } else if(userPrompt == "No" || "no"){
-        //         cout << "Kicking you back to main";
-        //     }
-        //     else{
-        //         cout << "Error: Invalid bid input, Please input \"Yes\" or \"No\"";
-        //     }
-        // } 
+        while (initialBidConfirmation == false){
+            getline(cin, buffer);
+            if (buffer == "Yes" || buffer == "yes"){
+                //Do the bid
+                cout << "Confirmation confirmed";
+                initialBidConfirmation = true;
+            } else if(buffer == "No" || buffer == "no"){
+                cout << "Kicking you back to main";
+                break;
+            }
+            else{
+                cout << "Error: Invalid bid input, Please input \"Yes\" or \"No: ";
+            }
+        } 
+        std::cout << "\nHow much would you like to bid (Min Bid: " << minimumPrice << "): ";
+        while (bidCheck == false){
+            buffer = "";
+            while(bidAlphanumericCheck == false){
+                getline(cin, buffer);
+                if(IsDecimalNumber(buffer)){
+                    theBid = stof(buffer);
+                    cout << "Bid offer: " << theBid;
+                    bidAlphanumericCheck = true;
+                } else{
+                    std::cout << "\nError: input must be numeric";
+                }
+            }   
+            if (theBid < minimumPrice){
+                std::cout << "\nError: New bid must be 5% higher than current price";
+                bidAlphanumericCheck = false;
+            } else if(theBid > MAX_BID){
+                std::cout << "\nError: The maximum bid you can bid is $" << MAX_BID;
+                bidAlphanumericCheck = false;
+            } else {
+                std::cout << "\n I think it works";
+                bidCheck = true;
+            }
+        }
+        std::cout << "Suck seeds";
         // while ()
         //If no, boot user back somewhere
         //If yes, prompt user to input
@@ -143,28 +185,10 @@ Bid::Bid(string** items, int itemCount){
         //end the main while loop
 }
 
-float Bid::CalculateLowestBid(){
-
+float Bid::CalculateLowestBid(float currentPrice){
+    return (currentPrice * MINIMUM_BID_PERCENT);
 }
 
 void Bid::BidOnItem(){
     
-}
-
-/**
- * Checks to see if the string is a valid integer number
- */
-bool IsIntegerNumber(std::string str) {
-    bool hasInteger = false;
-    int i = 0;
-    if(str[0] == '-') i = 1;    // If the number is negative
-    while(str[i]){
-        if(!isdigit(str[i])) {
-            if(str[i] == '.' && hasInteger == false) hasInteger = true; // If the character is a decimal and the loop has not already encountered a decimal: 1.000
-            else if(str[i] == '.' && hasInteger == true) return false;  // If the character is a decimal and the loop has encountered a decimal: 1.0.00
-            else return false;  // Character is not a digit or a decimal: 10ab
-        }
-        i++;
-    }
-    return true;
 }

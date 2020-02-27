@@ -105,11 +105,11 @@ void Home(Users user){
 				 error = "\nYour Username or Password were entered incorrectly. Please Try again!\n";
 			 }
 			
-     	}else if(choice.compare(CREATE) == 0 || choice.compare(CREATE1) == 0){
+     	}else if(choice.compare(CREATE) == 0){
 
 			user.Create(accounts, userCount);
 
-		}else if(choice.compare(exit) == 0 || choice.compare(Exit) == 0){
+		}else if(ToLower(choice).compare(EXIT) == 0){
      		ifExit = false;
      	}else if(choice.find("/") != std::string::npos || choice.find(" ") != std::string::npos){
      		ClearScreen();
@@ -157,6 +157,11 @@ void Menu(Users user){
                 ad.AdvertiseItem();
             }
 
+			if(choice.compare("bid") == 0){
+				std::cout << "Item Count Test: " << itemCount;
+				//itemCount is not being sent in correctly
+				Bid(items, itemCount);
+			}
 		}else if(user.getUserType().compare(BUY_STANDARD) == 0){
 			cout << "\nBS Enter Command: ";
 			getline(cin, choice);
@@ -168,11 +173,6 @@ void Menu(Users user){
 		}else if(user.getUserType().compare(ADMIN) == 0){
 			cout << "\nAA Enter Command: ";
 			getline(cin, choice);
-		if(choice.compare("bid") == 0){
-			std::cout << "Item Count Test: " << itemCount;
-			//itemCount is not being sent in correctly
-			Bid(items, itemCount);
-		}
 
 		if(ToLower(choice).compare(LOGOUT) == 0){
 			
@@ -180,8 +180,8 @@ void Menu(Users user){
 			
 		}
 		//std::cin.ignore( std::numeric_limits <std::streamsize> ::max(), '\n' );
-	} 
-
+		} 
+	}
 }
 
 /**
@@ -274,8 +274,8 @@ void readInitialFiles(string curr, string avail){
 			items[j][1] = temp.substr(5, 19); // Item Name
 			items[j][2] = temp.substr(24, 16); // Seller name
 			items[j][3] = temp.substr(40, 15);  // Current Bidder's name
-			items[j][4] = temp.substr(55, 4); // Remaining days
-			items[j][5] = temp.substr(60, 8); // Current bid
+			items[j][4] = temp.substr(55, 3); // Remaining days
+			items[j][5] = temp.substr(59, 8); // Current bid
 			j++;
 
 	}
