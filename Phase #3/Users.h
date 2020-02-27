@@ -110,7 +110,7 @@ class Users{
 		/**
 		 * Users Class Method for creating an account
 		 */ 
-		void Create();
+		void Create(string**, int);
 		/**
 		 * Users Class Method to add credits to a user account
 		 */ 

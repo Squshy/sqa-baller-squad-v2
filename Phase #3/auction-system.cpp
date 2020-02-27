@@ -78,6 +78,8 @@ void Home(Users user){
 	const string Exit = "Exit";
 	const string transactionlogin = "login";
 	const string transactionLogin = "Login";
+	const string CREATE = "create";
+	const string CREATE1 = "Create";
 	bool login;
 	bool ifExit = true;
 	
@@ -86,7 +88,7 @@ void Home(Users user){
 		
 		cout << error;
 		Title();
-		cout << "\nPlease Type login or exit!";
+		cout << "\nPlease Type login, create or exit!";
 		cout << "\nEnter Command: ";
 		getline(cin, choice);
 	
@@ -102,7 +104,11 @@ void Home(Users user){
 				 error = "\nYour Username or Password were entered incorrectly. Please Try again!\n";
 			 }
 			
-     	}else if(choice.compare(exit) == 0 || choice.compare(Exit) == 0){
+     	}else if(choice.compare(CREATE) == 0 || choice.compare(CREATE1) == 0){
+
+			user.Create(accounts, userCount);
+
+		}else if(choice.compare(exit) == 0 || choice.compare(Exit) == 0){
      		ifExit = false;
      	}else if(choice.find("/") != std::string::npos || choice.find(" ") != std::string::npos){
      		ClearScreen();
