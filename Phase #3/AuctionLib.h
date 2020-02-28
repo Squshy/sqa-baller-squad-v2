@@ -12,7 +12,12 @@
 #ifndef _AUCTIONLIB_H
 #define _AUCTIONLIB_H
 
+// Constants
+const std::string YES = "yes";
+const std::string NO = "no";
+
 std::string ToLower(std::string str);
+std::string Spaces(int numSpaces);
 
 bool IsDecimalNumber(std::string str);
 bool IsInteger(std::string str);

@@ -19,6 +19,7 @@
 #include <fstream>
 #include "Users.h"
 #include "Advertise.h"
+#include "Admin.h"
 #include "AuctionLib.h"
 #include "Bid.h"
 
@@ -152,14 +153,14 @@ void Menu(Users user){
 
 			cout << "\nFS Enter Command: ";
 			getline(cin, choice);
-			if(choice == "ADVERTISE") {
+			if(ToLower(choice) == "ADVERTISE") {
                 Advertise ad;
                 ad.AdvertiseItem();
-            }else if(choice.compare("addcredit") == 0){
+            }else if(ToLower(choice).compare("addcredit") == 0){
 				user.AddCredits(user);
 
 			
-			}else if(choice.compare("bid") == 0){
+			}else if(ToLower(choice).compare("bid") == 0){
 				std::cout << "Item Count Test: " << itemCount;
 				//itemCount is not being sent in correctly
 				Bid(items, itemCount);
@@ -167,35 +168,32 @@ void Menu(Users user){
 		}else if(user.getUserType().compare(BUY_STANDARD) == 0){
 			cout << "\nBS Enter Command: ";
 			getline(cin, choice);
-			if(choice.compare("bid") == 0){
+			if(ToLower(choice).compare("bid") == 0){
 				
-			}else if(choice.compare("advertise") == 0){
-
 			}
 		}else if(user.getUserType().compare(SELL_STANDARD) == 0){
 			cout << "\nSS Enter Command: ";
 			getline(cin, choice);
-			if(choice.compare("bid") == 0){
-				
-			}else if(choice.compare("advertise") == 0){
+            if(ToLower(choice).compare("advertise") == 0){
 
 			}
 		}else if(user.getUserType().compare(ADMIN) == 0){
 			cout << "\nAA Enter Command: ";
 			getline(cin, choice);
-			if(choice.compare("bid") == 0){
+			if(ToLower(choice).compare("bid") == 0) {
 				
-			}else if(choice.compare("advertise") == 0){
+			}else if(ToLower(choice).compare("advertise") == 0) {
 
-			}else if(choice.compare("addcredit") == 0){
+			}else if(ToLower(choice).compare("addcredit") == 0) {
 				
-			}else if(choice.compare("delete") == 0){
-
-			}else if(choice.compare("refund") == 0){
+			}else if(ToLower(choice).compare("delete") == 0) {
+                Admin admin;
+                admin.DeleteUser(accounts, userCount, user);
+			}else if(ToLower(choice).compare("refund") == 0) {
 				
-			}else if(choice.compare("update") == 0){
+			}else if(ToLower(choice).compare("update") == 0) {
 
-			}else if(choice.compare("changepassword") == 0){
+			}else if(ToLower(choice).compare("changepassword") == 0) {
 				
 			}
 
