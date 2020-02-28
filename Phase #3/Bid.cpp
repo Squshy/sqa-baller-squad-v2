@@ -71,18 +71,13 @@ const short MAX_ITEM_NAME_LENGTH = 19;
         //Compare input to the item file in a loop and add it into an array if matches
         itemLength = itemName.length();
         //Gets the total number of matching items, which will be used for the array
-        // std::cout << "\nItem Count Test in Bid cpp: " << itemCount; // Only 1 item in so far
         for (int i = 0; i < itemCount; i++){
             itemNameListCut = items[i][1].substr(0,itemLength);
-            // std::cout << "\nItem Name List Cut Test in Bid cpp: " << itemNameListCut;
             if(itemName.compare(itemNameListCut) == 0){
                 bidListCount++;
-                // std::cout << "\nOutputting Items: "+ items[i][1];
             }
-            // std::cout << "\noof";
         }
 
-        // std::cout << "BidListCount Test in Bid cpp:asdasd " << bidListCount;
         //If itemCount is 0 then that means there are no matches and will prompt user to start over
         if (bidListCount == 0){
             std::cout << "\nThere are no matching results. Please enter a new item name.";
@@ -102,15 +97,13 @@ const short MAX_ITEM_NAME_LENGTH = 19;
         for (int i = 0; i < itemCount; i++){
             itemNameListCut = items[i][1].substr(0,itemLength);
 
-            // std::cout << "\n" << itemNameListCut; 
-            //Get Item name and current bid for it and if it matches
+            //Get Item name, seller's name, remaining days and current bid when it matches
             //TODO: Check if seller's name is same as current user and don't add it in bidList
             if(itemName.compare(itemNameListCut) == 0){ //We need i on the items array but we want to increment 
                 bidList[j][0] = items[i][1]; //Item Name
                 bidList[j][1] = items[i][2]; //Seller's name
                 bidList[j][2] = items[i][4]; //Remaining days
                 bidList[j][3] = items[i][5]; //Current Bid
-	            // cout << bidList[j][0] + bidList[j][1] + bidList[j][2] + bidList[j][3] + "\n";
                 j++;
             }
         }
@@ -119,7 +112,6 @@ const short MAX_ITEM_NAME_LENGTH = 19;
         for (int i = 0; i < bidListCount; i++){
             std::cout << "\n" << i << ". " << bidList[i][0] << " " << bidList[i][1] << " " << bidList[i][2] << " " << bidList[i][3];
         }
-        cout << "\nPast Displaying results";
         // Prompt user to select a number from a list and to exit type -1
         // Check if the item belongs to a user as they cannot bid on their own items and boot them back to item list
         while(itemSelectCheck == false){
@@ -135,7 +127,7 @@ const short MAX_ITEM_NAME_LENGTH = 19;
                     itemSelect = std::stoi(buffer);
                     alphanumericCheck = true;
                 }else {
-                    std::cout << "\nError: Input needs to be numeric";
+                    std::cout << "\nError: Input needs to be numeric: ";
                 }
             }
             // Need to validate against alphabetic characters first then convert to integer
@@ -197,7 +189,6 @@ const short MAX_ITEM_NAME_LENGTH = 19;
                 std::cout << "\nError: The maximum bid you can bid is $" << MAX_BID;
                 bidAlphanumericCheck = false;
             } else {
-                std::cout << "\n I think it works";
                 Writer writer;
                 //Item Name, Seller's name, buyer's name, new bid all in string
                 cout << bidList[itemSelect][0] << bidList[itemSelect][1] << user.getUserName(), buffer;
@@ -205,12 +196,7 @@ const short MAX_ITEM_NAME_LENGTH = 19;
                 bidCheck = true;
             }
         }
-        std::cout << "Suck seeds";
-        // while ()
-        //If no, boot user back somewhere
-        //If yes, prompt user to input
-        //Check for negative number, letters, 
-        //end the main while loop
+        std::cout << "Success!";
 }
 
 bool Bid::exitCmd(string buffer){
