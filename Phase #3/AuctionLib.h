@@ -3,11 +3,12 @@
 *
 * @author Paul Kerrigan, Henry Zheng, Calvin Lapp
 * @since February 26, 2020
-* @version  1.0
+* @version  1.2
 * @name AuctionLib.h
 */
 
 #include <string>
+#include "Users.h"
 
 #ifndef _AUCTIONLIB_H
 #define _AUCTIONLIB_H
@@ -15,6 +16,10 @@
 // Constants
 const std::string YES = "yes";
 const std::string NO = "no";
+const short MAX_ITEM_NAME_LENGTH = 19;
+const short MAX_USER_NAME_LENGTH = 19;
+const short MAX_PASSWORD_LENGTH = 19;
+const short MAX_CREDIT_LENGTH = 9;
 
 std::string ToLower(std::string str);
 std::string Spaces(int numSpaces);

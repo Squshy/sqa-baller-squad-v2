@@ -7,6 +7,7 @@
 * @name Writer.cpp
 */
 
+#include "AuctionLib.h"
 #include "Writer.h"
 #include "Users.h"
 #include <string>
@@ -77,8 +78,6 @@ void Writer::WriteToAvailableItemsFile(string id, string item, string seller, st
 
 void Writer::GenericWriteToDailyTransactionFile(Users user, string transactionCode){
     fstream File;
-	int fileNumber;
-    int i = 0;
     std::stringstream stream;
     if(transactionCode == "00"){
         stream << std::fixed << std::setprecision(2) << fixed << user.getCredits();
@@ -91,9 +90,9 @@ void Writer::GenericWriteToDailyTransactionFile(Users user, string transactionCo
     string password = user.getPassword();
     string userType = user.getUserType();
 	string cred = credHolder;
-    username.append(15 - user.getUserName().length(), ' ');
-    password.append(12 - user.getPassword().length(), ' ');
-    cred.insert(cred.begin(), 9 - credHolder.length(), '0');
+    username.append(MAX_USER_NAME_LENGTH - user.getUserName().length(), ' ');
+    password.append(MAX_PASSWORD_LENGTH - user.getPassword().length(), ' ');
+    cred.insert(cred.begin(), MAX_CREDIT_LENGTH - credHolder.length(), '0');
     
 
 	File.open(DAILY_TRANSACTION_FILE, ios::app); //opening the file
@@ -101,8 +100,34 @@ void Writer::GenericWriteToDailyTransactionFile(Users user, string transactionCo
         cerr << "Unable to open file";
     }
 
-     File << "\n" << code << " " << username << " " << userType << " " << cred;
-	 File.close(); //closing the file
+    File << "\n" << code << " " << username << " " << userType << " " << cred;
+    File.close(); //closing the file
+}
 
+void Writer::WriteAdvertiseToDailyTransactionFile(Users user, string item, int numDays, float bid) {
+    fstream file;
+    const string ADVERTISE_CODE = "03";
+    std::stringstream bidStream;
+    string username, itemName, aucBid = "";
 
+    file.open(DAILY_TRANSACTION_FILE, ios::app); //opening the file
+	if (!file) {
+        cerr << "Unable to open file";
+    }
+
+    bidStream << std::fixed << std::setprecision(2) << fixed << bid;
+    username = user.getUserName();
+    itemName = item;
+    aucBid   = bidStream.str();
+    username.append(MAX_USER_NAME_LENGTH - user.getUserName().length(), ' ');
+    itemName.append(MAX_ITEM_NAME_LENGTH - itemName.length(), ' ');
+    aucBid.insert(aucBid.begin(), MAX_CREDIT_LENGTH - aucBid.length(), '0');
+
+    file << endl 
+         << ADVERTISE_CODE << " " 
+         << itemName << " " 
+         << username << " " 
+         << setfill('0') << setw(3) << numDays << " "
+         << setprecision(2) << fixed << aucBid;
+    file.close();
 }

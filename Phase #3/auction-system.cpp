@@ -98,10 +98,10 @@ void Home(Users user){
 			ClearScreen();
 			Title();
      		login = user.Login(accounts, userCount);
-			 if(login == true){
+			 if(login == true) {
 				 Menu(user);
 				 ClearScreen();
-			 }else{
+			 }else {
 				 //ClearScreen();
 				 error = "\nYour Username or Password were entered incorrectly. Please Try again!\n";
 			 }
@@ -149,14 +149,14 @@ void Menu(Users user){
 //Commented out for testing bid
 		// if(user.getUserType().compare(fullstandardUser) == 0){
 
-		if(user.getUserType().compare(FULL_STANDARD) == 0){
+		if(user.getUserType().compare(FULL_STANDARD) == 0) {
 
 			cout << "\nFS Enter Command: ";
 			getline(cin, choice);
-			if(ToLower(choice) == "ADVERTISE") {
+			if(ToLower(choice).compare(ADVERTISE) == 0) {
                 Advertise ad;
-                ad.AdvertiseItem();
-            }else if(ToLower(choice).compare("addcredit") == 0){
+                ad.AdvertiseItem(user);
+            }else if(ToLower(choice).compare("addcredit") == 0) {
 				user.AddCredits(user);
 
 			
@@ -165,19 +165,19 @@ void Menu(Users user){
 				//itemCount is not being sent in correctly
 				Bid(items, itemCount);
 			}
-		}else if(user.getUserType().compare(BUY_STANDARD) == 0){
+		}else if(user.getUserType().compare(BUY_STANDARD) == 0) {
 			cout << "\nBS Enter Command: ";
 			getline(cin, choice);
 			if(ToLower(choice).compare("bid") == 0){
 				
 			}
-		}else if(user.getUserType().compare(SELL_STANDARD) == 0){
+		}else if(user.getUserType().compare(SELL_STANDARD) == 0) {
 			cout << "\nSS Enter Command: ";
 			getline(cin, choice);
-            if(ToLower(choice).compare("advertise") == 0){
+            if(ToLower(choice).compare("advertise") == 0) {
 
 			}
-		}else if(user.getUserType().compare(ADMIN) == 0){
+		}else if(user.getUserType().compare(ADMIN) == 0) {
 			cout << "\nAA Enter Command: ";
 			getline(cin, choice);
 			if(ToLower(choice).compare("bid") == 0) {
