@@ -68,7 +68,7 @@ class Writer{
         /**
          * Writer class method to write to the user accounts file   
          */
-        void AddCreditToUser(Users);
+        void GenericWriteToDailyTransactionFile(Users, string);
 
 
 };

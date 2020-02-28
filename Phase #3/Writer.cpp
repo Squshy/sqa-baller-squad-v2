@@ -88,52 +88,28 @@ void Writer::WriteToUserFile(string user, string pwd, string type){
 
 }
 
-void Writer::AddCreditToUser(Users user){
+void Writer::GenericWriteToDailyTransactionFile(Users user, string transactionCode){
     fstream File;
 	int fileNumber;
     int i = 0;
-    string getUser;
-    string getPwd;
-    string getType;
-    float getCred;
     std::stringstream stream;
-    stream << std::fixed << std::setprecision(2) << fixed << user.getCredits();
+    stream << std::fixed << std::setprecision(2) << fixed << user.getCreditCount();
     string credHolder = stream.str();
-    string username;
-    string password;
-    string userType;
-	string cred;
-     username = user.getUserName();
-     username.append(15 - user.getUserName().length(), ' ');
-     password = user.getPassword();
-     password.append(12 - user.getPassword().length(), ' ');
-     userType = user.getUserType();
-     cred = credHolder;
-     cred.insert(cred.begin(), 9 - credHolder.length(), '0');
+    string code = transactionCode;
+    string username = user.getUserName();
+    string password = user.getPassword();
+    string userType = user.getUserType();
+	string cred = credHolder;
+    username.append(15 - user.getUserName().length(), ' ');
+    password.append(12 - user.getPassword().length(), ' ');
+    cred.insert(cred.begin(), 9 - credHolder.length(), '0');
 
-	File.open(CURRENT_USER_ACCOUNTS_FILE); //opening the file
+	File.open(DAILY_TRANSACTION_FILE, ios::app); //opening the file
 	if (!File) {
         cerr << "Unable to open file";
     }
-		
-	//cout << username;
-	while (File >> getUser >> getPwd >> getType >> getCred) {
-			
-			if(user.getUserName().compare(getUser) == 0){
-                fileNumber = i;
-            }
-			i++;
 
-	}
-     File.clear();
-	 File.seekg(0, ios::beg);
-    //for(int i = 0; i < fileNumber; i++){
-    //      File.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    //}
-    // Position the put pointer -- switching from reading to writing.
-    File.seekp(fileNumber * 43);
-
-     File << username << " " << password << " " << userType << " " << cred << endl;
+     File << "\n" << code << " " << username << " " << userType << " " << cred << endl;
 	 File.close(); //closing the file
 
 

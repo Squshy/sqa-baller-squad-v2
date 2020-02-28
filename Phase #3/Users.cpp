@@ -104,8 +104,8 @@ void Users::AddCredits(Users user){
 
 	string credit;
 	float sum;
-	float sum2;
 	Writer writer;
+	const string code = "06";
 
 	cout << "\nHow much Credit do you want to add to your account: ";
 	getline(cin, credit);
@@ -114,16 +114,11 @@ void Users::AddCredits(Users user){
 	if(sum > SESSION_CREDIT_LIMIT){
 		cout << "Error! You have exceeded your credit limit";
 	}else{
-		setCreditCount(sum);
+		user.setCreditCount(sum);
 	}
 	
-	sum2 = getCredits() + cred;
-	user.setCredits(sum2);
-	writer.AddCreditToUser(user);
+	writer.AddCreditToUser(user, code);
 
 }
 
-void Users::ReadUsersFile(){
-	
-}
 
