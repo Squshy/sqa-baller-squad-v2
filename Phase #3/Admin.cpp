@@ -17,11 +17,18 @@ Admin::Admin(){
     
 }
 
+inline void UserNotFound(std::string user) {
+    LightHighlight();
+    std::cout << Spaces(12)
+                << "User " << user << " does not exist.";
+    Highlight();
+}
+
 void Admin::AddCredits(){
 
 };
 
-void Admin::DeleteUser(std::string** users, int numUsers, Users self){
+void Admin::DeleteUser(std::string** users, int numUsers){
     string username, buffer = "";
     bool userFound, confirm = false;
     Writer writer;
@@ -34,18 +41,17 @@ void Admin::DeleteUser(std::string** users, int numUsers, Users self){
     getline(cin, username);
 
     // Loops through the users to see if the usernames match
+
     for(int i = 0; i < numUsers; i++) if(users[i][0] == username){
          userFound = true;
          userType = users[i][2];
          credits = users[i][3];
     }
+    userFound = MatchUser(users, numUsers, username);
 
     // If a user was found that matches the username
     if(userFound == false) {
-        LightHighlight();
-        std::cout << Spaces(12)
-                  << "User " << username << " does not exist.";
-        Highlight();
+        UserNotFound(username);
     } else {
         while(confirm == false) {
             std::cout << "\nAre you sure you want to delete user " << username << "?"
@@ -81,14 +87,118 @@ void Admin::DeleteUser(std::string** users, int numUsers, Users self){
     }
 }
 
-void Admin::EnableUser(){
-
+void Admin::Update(string** users, int numUsers){
+    string buffer = "";
+    std::cout << "Would you like to enable or disable a user?: ";
+    getline(cin, buffer);
+    if(ToLower(buffer).compare(DISABLE) == 0) DisableUser(users, numUsers);
+    else if(ToLower(buffer).compare(ENABLE) == 0) EnableUser(users, numUsers);
+    else {
+        LightHighlight();
+        std::cout << Spaces(18) << "Invalid option";
+        Highlight();
+    }
 }
 
-void Admin::DisableUser(){
+void Admin::EnableUser(string** users, int numUsers){
+    string buffer = "";
+    Users user;
+    bool userFound, confirm = false;
+    std::cout << endl
+              << "Which user would you like to enable?: ";
+    getline(cin, buffer);
 
+    for(int i = 0; i < numUsers; i++) {
+        if(users[i][0] == buffer) {
+            userFound = true;
+            user.setUserName(users[i][0]);
+            user.setUserType(users[i][2]);
+        } 
+    } 
+
+    if(!userFound) {
+        UserNotFound(buffer);
+    } else {
+        if(user.getUserType().compare(DISABLED_CODE) != 0) {
+            LightHighlight();
+            std::cout << endl
+                      << user.getUserName()
+                      << "'s account is already enabled.";
+            Highlight();
+        } else {
+            std::cout << endl
+                  << "Do you want to enable this user? (Yes/No): ";
+            getline(cin, buffer);
+            if(ToLower(buffer).compare(YES) == 0) {
+                LightHighlight();
+                std::cout << user.getUserName() << "'s account has been enabled!";
+                Highlight();
+                // Enable the man
+            } else if(ToLower(buffer).compare(NO) == 0) {
+                LightHighlight();
+                std::cout << user.getUserName() << "'s account was not enabled!";
+                Highlight();
+            } else {
+                LightHighlight();
+                std::cout << "Invalid option.  Please type \"yes\" or \"no\".";
+                Highlight();
+            }
+        }
+        
+    }
 }
 
-void Admin::Refund(Items){
+void Admin::DisableUser(string** users, int numUsers){
+    string buffer = "";
+    Users user;
+    bool userFound, confirm = false;
+    std::cout << endl
+              << "Which user would you like to disable?: ";
+    getline(cin, buffer);
+
+    for(int i = 0; i < numUsers; i++) {
+        if(users[i][0] == buffer) {
+            userFound = true;
+            user.setUserName(users[i][0]);
+            user.setUserType(users[i][2]);
+        } 
+    } 
+
+    if(!userFound) {
+        UserNotFound(buffer);
+    } else {
+        if(user.getUserType().compare(DISABLED_CODE) == 0) {
+            LightHighlight();
+            std::cout << endl
+                      << user.getUserName()
+                      << "'s account is already disabled.";
+            Highlight();
+        } else {
+            while(confirm == false) {
+                std::cout << endl
+                        << "Do you want to disable this user? (Yes/No): ";
+                getline(cin, buffer);
+                if(ToLower(buffer).compare(YES) == 0) {
+                    LightHighlight();
+                    std::cout << user.getUserName() << "'s account has been disabled!";
+                    Highlight();
+                    confirm = true;
+                    // Delete the man
+                } else if(ToLower(buffer).compare(NO) == 0) {
+                    LightHighlight();
+                    std::cout << user.getUserName() << "'s account was not disabled!";
+                    Highlight();
+                    confirm = true;
+                } else {
+                    LightHighlight();
+                    std::cout << "Invalid option.  Please type \"yes\" or \"no\".";
+                    Highlight();
+                }
+            }
+        }
+    }
+}  
+
+void Admin::Refund(Items) {
 
 }

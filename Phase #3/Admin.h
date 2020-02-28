@@ -39,15 +39,19 @@ class Admin : public Users{
         /**
          * Method to delete a chosen user
          */ 
-        void DeleteUser(std::string** users, int numUsers, Users self);
+        void DeleteUser(std::string**, int);
+        /**
+         * Method to choose which update to do
+         */ 
+        void Update(string**, int);
         /**
          * Method enable a disabled user account
          */ 
-        void EnableUser();
+        void EnableUser(string**, int);
         /**
          * Method to disable a current user   
          */
-        void DisableUser();
+        void DisableUser(string**, int);
         /**
          * Method to refund a user from a transaction
          */ 
