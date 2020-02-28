@@ -19,6 +19,7 @@ bool Users::Login(string** users, int userCount){
 	string username = "";
 	string password = "";
 	bool validation = false;
+	setCreditCount(0.0);
 		
      	cout << "\nUsername: ";
      	cin >> username;
@@ -99,7 +100,26 @@ while(validation == false){
 
 }
 
-void Users::AddCredits(){
+void Users::AddCredits(Users user){
+
+	string credit;
+	float sum;
+	float sum2;
+	Writer writer;
+
+	cout << "\nHow much Credit do you want to add to your account: ";
+	getline(cin, credit);
+	float cred = stof(credit);
+	sum = user.getCreditCount() + cred;
+	if(sum > SESSION_CREDIT_LIMIT){
+		cout << "Error! You have exceeded your credit limit";
+	}else{
+		setCreditCount(sum);
+	}
+	
+	sum2 = getCredits() + cred;
+	user.setCredits(sum2);
+	writer.AddCreditToUser(user);
 
 }
 

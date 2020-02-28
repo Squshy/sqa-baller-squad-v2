@@ -86,7 +86,7 @@ void Home(Users user){
 	
 	while(ifExit == true){
 		
-		
+		ClearScreen();
 		cout << error;
 		Title();
 		cout << "\nPlease Type login, create or exit!";
@@ -101,18 +101,19 @@ void Home(Users user){
 				 Menu(user);
 				 ClearScreen();
 			 }else{
-				 ClearScreen();
+				 //ClearScreen();
 				 error = "\nYour Username or Password were entered incorrectly. Please Try again!\n";
 			 }
 			
      	}else if(choice.compare(CREATE) == 0){
 
 			user.Create(accounts, userCount);
+			readInitialFiles(currentAccounts, availableItems);
 
-		}else if(ToLower(choice).compare(EXIT) == 0){
+     	}else if(ToLower(choice).compare(EXIT) == 0){
      		ifExit = false;
      	}else if(choice.find("/") != std::string::npos || choice.find(" ") != std::string::npos){
-     		ClearScreen();
+     		//ClearScreen();
 			error = "\nSlashes and Spaces are not Allowed!\n";
 			
 		}else{
@@ -120,7 +121,7 @@ void Home(Users user){
 				error = "\nYou must login before you can access our system\n";
 			}
 		}
-		ClearScreen();
+		
 		
 	}	
 	
@@ -151,13 +152,14 @@ void Menu(Users user){
 
 			cout << "\nFS Enter Command: ";
 			getline(cin, choice);
-
-            if(choice == "ADVERTISE") {
+			if(choice == "ADVERTISE") {
                 Advertise ad;
                 ad.AdvertiseItem();
-            }
+            }else if(choice.compare("addcredit") == 0){
+				user.AddCredits(user);
 
-			if(choice.compare("bid") == 0){
+			
+			}else if(choice.compare("bid") == 0){
 				std::cout << "Item Count Test: " << itemCount;
 				//itemCount is not being sent in correctly
 				Bid(items, itemCount);
@@ -165,23 +167,49 @@ void Menu(Users user){
 		}else if(user.getUserType().compare(BUY_STANDARD) == 0){
 			cout << "\nBS Enter Command: ";
 			getline(cin, choice);
+			if(choice.compare("bid") == 0){
+				
+			}else if(choice.compare("advertise") == 0){
 
+			}
 		}else if(user.getUserType().compare(SELL_STANDARD) == 0){
 			cout << "\nSS Enter Command: ";
 			getline(cin, choice);
+			if(choice.compare("bid") == 0){
+				
+			}else if(choice.compare("advertise") == 0){
 
+			}
 		}else if(user.getUserType().compare(ADMIN) == 0){
 			cout << "\nAA Enter Command: ";
 			getline(cin, choice);
+			if(choice.compare("bid") == 0){
+				
+			}else if(choice.compare("advertise") == 0){
+
+			}else if(choice.compare("addcredit") == 0){
+				
+			}else if(choice.compare("delete") == 0){
+
+			}else if(choice.compare("refund") == 0){
+				
+			}else if(choice.compare("update") == 0){
+
+			}else if(choice.compare("changepassword") == 0){
+				
+			}
+
+		}
 
 		if(ToLower(choice).compare(LOGOUT) == 0){
 			
 			ifLogout = false;
 			
 		}
-		//std::cin.ignore( std::numeric_limits <std::streamsize> ::max(), '\n' );
-		} 
-	}
+		
+
+	} 
+
 }
 
 /**
@@ -279,7 +307,7 @@ void readInitialFiles(string curr, string avail){
 			j++;
 
 	}
-	cout << items[0][0] + items[0][1] + items[0][2] + items[0][3] + items[0][4] + items[0][5] + "\n";
+	//cout << items[0][0] + items[0][1] + items[0][2] + items[0][3] + items[0][4] + items[0][5] + "\n";
 
 	File.close(); //closing the file
 }

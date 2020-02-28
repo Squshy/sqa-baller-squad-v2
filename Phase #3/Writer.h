@@ -18,6 +18,7 @@
 #include <cstdlib>
 #include <string>
 #include <fstream>
+#include "Users.h"
 
 using namespace std;
 
@@ -63,7 +64,11 @@ class Writer{
         /**
          * Writer class method to write to the available items file    
          */
-        void WriteToAvailableItemsFile();
+        void WriteToAvailableItemsFile(string, string, string, string, string, string);
+        /**
+         * Writer class method to write to the user accounts file   
+         */
+        void AddCreditToUser(Users);
 
 
 };

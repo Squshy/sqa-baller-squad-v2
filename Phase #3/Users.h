@@ -38,6 +38,8 @@ class Users{
 		string userType;
 		/** Private Attribute for Users credits */
 		float credits;
+		/** Private Attribute for Users credit count */
+		float creditCount;
 
 	public:
 		/**
@@ -48,7 +50,7 @@ class Users{
 		/**
 		 * The amount of credit a user can add per login session
 		 */ 
-		const float SESSION_CREDIT_LIMIT = 9999.99; 	
+		const float SESSION_CREDIT_LIMIT = 999.99; 	
 
 		/**
 		 * Setter for User Name private attribute
@@ -98,6 +100,18 @@ class Users{
 		float getCredits(){
 			return credits;
 		}
+		/**
+		 * Setter for setting User Credits private attribute
+		 */
+		void setCreditCount(float cred){
+			creditCount = cred;
+		}
+		/**
+		 * Getter for getting User Credits private attribute
+		 */
+		float getCreditCount(){
+			return creditCount;
+		}
 		
 		/**
 		 * Users Class Method for Login
@@ -114,7 +128,7 @@ class Users{
 		/**
 		 * Users Class Method to add credits to a user account
 		 */ 
-		virtual void AddCredits();
+		virtual void AddCredits(Users);
 
 		/**
 		 * Reads the current user accounts file at the start before login
