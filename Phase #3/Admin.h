@@ -39,7 +39,7 @@ class Admin : public Users{
         /**
          * Method to delete a chosen user
          */ 
-        void DeleteUser();
+        void DeleteUser(std::string** users, int numUsers, Users self);
         /**
          * Method enable a disabled user account
          */ 

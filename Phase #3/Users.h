@@ -129,11 +129,10 @@ class Users{
 		 * Users Class Method to add credits to a user account
 		 */ 
 		virtual void AddCredits(Users);
-
 		/**
-		 * Reads the current user accounts file at the start before login
+		 * Users Class Method to end session
 		 */ 
-		void ReadUsersFile();
+		void EndSession(Users);
 
 };
 

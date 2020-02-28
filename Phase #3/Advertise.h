@@ -19,15 +19,14 @@
 #include <string>
 #include <fstream>
 #include "Items.h"
+#include "Users.h"
 
 using namespace std;
 
 /** @brief Advertise Class 
- * @description: Used to allow user to create an item and put it up for auction     
- * 
- * 
+ * @description: Used to allow user to create an item and put it up for auction    
  */
-class Advertise : public Items{
+class Advertise : public Items {
 
     private:
     /** Private Attribute for Remaining Days of the Item */
@@ -44,14 +43,14 @@ class Advertise : public Items{
         /**
 		 * Setter for Remaining Days private attribute
 		 */
-		void setRemainingDays(short days){
+		void setRemainingDays(short days) {
 			remainingDays = days;
 		}
 
 		/**
 		 * Getter for Remaining Days private attribute
 		 */
-		short getRemainingDays(){
+		short getRemainingDays() {
 			return remainingDays;
 		}
                 
@@ -59,7 +58,7 @@ class Advertise : public Items{
          * User is prompted to input most information of the item they wish to advertise for
          * (item name, minimum bid price and number of days to put the item up for)
          */         
-        void AdvertiseItem();
+        void AdvertiseItem(Users self);
 
 
 

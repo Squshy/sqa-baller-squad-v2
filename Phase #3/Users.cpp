@@ -50,6 +50,7 @@ void Users::ChangePassword(){
 void Users::Create(string** users, int userCount){
 
 	Writer writer;
+	Users user;
 	string username;
 	string password;
 	string userType;
@@ -57,6 +58,7 @@ void Users::Create(string** users, int userCount){
 	const string BUY_STANDARD = "BS";
 	const string SELL_STANDARD = "SS";
 	const string FULL_STANDARD = "FS";
+	const string code = "01";
 	
 while(validation == false){
 	cout << "Enter Username: ";
@@ -93,7 +95,10 @@ while(validation == false){
 		
 	}else{
 		cout << "User Successfully Created\n";
-		writer.WriteToUserFile(username, password, userType);
+		user.setUserName(username);
+		user.setPassword(password);
+		user.setUserType(userType);
+		writer.GenericWriteToDailyTransactionFile(user, code);
 		validation = true;
 	}
 }
@@ -104,8 +109,8 @@ void Users::AddCredits(Users user){
 
 	string credit;
 	float sum;
-	float sum2;
 	Writer writer;
+	const string code = "06";
 
 	cout << "\nHow much Credit do you want to add to your account: ";
 	getline(cin, credit);
@@ -114,16 +119,18 @@ void Users::AddCredits(Users user){
 	if(sum > SESSION_CREDIT_LIMIT){
 		cout << "Error! You have exceeded your credit limit";
 	}else{
-		setCreditCount(sum);
+		user.setCreditCount(sum);
 	}
 	
-	sum2 = getCredits() + cred;
-	user.setCredits(sum2);
-	writer.AddCreditToUser(user);
+	writer.GenericWriteToDailyTransactionFile(user, code);
 
 }
 
-void Users::ReadUsersFile(){
-	
+void Users::EndSession(Users user){
+	const string code = "00";
+	Writer writer;
+	writer.GenericWriteToDailyTransactionFile(user, code);
+
 }
+
 
