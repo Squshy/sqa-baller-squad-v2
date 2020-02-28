@@ -130,11 +130,6 @@ class Users{
 		 */ 
 		virtual void AddCredits(Users);
 
-		/**
-		 * Reads the current user accounts file at the start before login
-		 */ 
-		void ReadUsersFile();
-
 };
 
 
