@@ -65,10 +65,15 @@ bool IsInteger(std::string str) {
         if(!isdigit(str[i])) return false;  // Character is not a digit: 10ab
         i++;
     }
-    // for(int i = 0; i < str.length(); i++){
-    //     if(!isdigit(str[i])) return false;  // Character is not a digit: 10ab
-    // }
     return true;
+}
+
+/**
+ * Loop through a list of users to see if a name matches
+ */
+bool MatchUser(std::string** users, int numUsers, std::string name){
+    for(int i = 0; i < numUsers; i++) if(users[i][0] == name) return true;
+    return false;
 }
 
 /**
