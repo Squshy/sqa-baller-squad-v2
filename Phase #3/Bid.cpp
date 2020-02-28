@@ -14,7 +14,6 @@
 Bid::Bid(string** items, int itemCount){
     const short MAX_ITEM_NAME_LENGTH = 19;
     const float MAX_BID = 999.99f;
-
     string itemName = "";
     string buffer = "";
     bool itemCheck = false;
@@ -37,10 +36,15 @@ Bid::Bid(string** items, int itemCount){
     //While loop until user to inputs valid item name
     std::cout << "\nType \"exit\" to return to main menu";
     while (itemMatch == false){
+        itemName = "";
         while (itemCheck == false){
-            std::cout << "\nEnter an Item name:";
+            std::cout << "\nEnter an Item name: ";
             getline(cin, itemName);
-
+            if (exitCmd(itemName)){
+                std::cout << "Hi " << exitCmd(itemName);
+                break;
+            }
+            // std::cout << exitCmd(itemName);
             //Item name has to be 19 characters or fewer
             if (itemName.length() > MAX_ITEM_NAME_LENGTH){
                 std::cout << "\nItem Name must be 19 characters or fewer";
@@ -110,10 +114,14 @@ Bid::Bid(string** items, int itemCount){
         // Prompt user to select a number from a list and to exit type -1
         // Check if the item belongs to a user as they cannot bid on their own items and boot them back to item list
         while(itemSelectCheck == false){
+            buffer = "";
             while(alphanumericCheck == false){
                 std::cout << "\nEnter a number from the list: ";
                 getline(cin, buffer);
                 
+                if (exitCmd(buffer) == true){
+                    break;
+                }
                 if(IsInteger(buffer)){
                     itemSelect = std::stoi(buffer);
                     alphanumericCheck = true;
@@ -140,7 +148,11 @@ Bid::Bid(string** items, int itemCount){
 
         //Ask user if they would like to bid on it
         while (initialBidConfirmation == false){
+            buffer = "";
             getline(cin, buffer);
+            if (exitCmd(buffer) == true){
+                break;
+            }
             if (buffer == "Yes" || buffer == "yes"){
                 //Do the bid
                 cout << "Confirmation confirmed";
@@ -156,6 +168,9 @@ Bid::Bid(string** items, int itemCount){
         std::cout << "\nHow much would you like to bid (Min Bid: " << minimumPrice << "): ";
         while (bidCheck == false){
             buffer = "";
+            if (exitCmd(buffer) == true){
+                break;
+            }
             while(bidAlphanumericCheck == false){
                 getline(cin, buffer);
                 if(IsDecimalNumber(buffer)){
@@ -191,4 +206,12 @@ float Bid::CalculateLowestBid(float currentPrice){
 
 void Bid::BidOnItem(){
     
+}
+
+bool Bid::exitCmd(string buffer){
+    if (ToLower(buffer).compare(EXIT) == 0){
+        return true;
+    }else {
+        return false;
+    }
 }

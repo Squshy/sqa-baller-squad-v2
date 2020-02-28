@@ -28,7 +28,7 @@ using namespace std;
  * 
  */
 class Bid : public Items{
-
+const string EXIT = "exit";
 
     private:
         
@@ -56,6 +56,7 @@ class Bid : public Items{
          */ 
         void BidOnItem();
 
+        bool exitCmd(string buffer);
 
 };
 
