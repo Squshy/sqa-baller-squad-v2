@@ -77,7 +77,7 @@ void Writer::WriteToUserFile(string user, string pwd, string type){
     password.append(12 - pwd.length(), ' ');
     usertype = type;
 
-
+}
 
 // void Writer::WriteToUserFile(string user, string pwd, string type){
 
