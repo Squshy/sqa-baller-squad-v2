@@ -16,6 +16,9 @@
 // Constants
 const std::string YES = "yes";
 const std::string NO = "no";
+const std::string DISABLE = "disable";
+const std::string ENABLE = "enable";
+const std::string DISABLED_CODE = "DS";
 const short MAX_ITEM_NAME_LENGTH = 19;
 const short MAX_USER_NAME_LENGTH = 19;
 const short MAX_PASSWORD_LENGTH = 19;
@@ -26,6 +29,7 @@ std::string Spaces(int numSpaces);
 
 bool IsDecimalNumber(std::string str);
 bool IsInteger(std::string str);
+bool MatchUser(std::string** users, int numUsers, std::string name);
 
 void Highlight();
 void LightHighlight();

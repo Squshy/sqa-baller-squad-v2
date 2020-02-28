@@ -188,11 +188,12 @@ void Menu(Users user){
 				
 			}else if(ToLower(choice).compare("delete") == 0) {
                 Admin admin;
-                admin.DeleteUser(accounts, userCount, user);
+                admin.DeleteUser(accounts, userCount);
 			}else if(ToLower(choice).compare("refund") == 0) {
 				
 			}else if(ToLower(choice).compare("update") == 0) {
-
+                Admin admin;
+                admin.Update(accounts, userCount);
 			}else if(ToLower(choice).compare("changepassword") == 0) {
 				
 			}
