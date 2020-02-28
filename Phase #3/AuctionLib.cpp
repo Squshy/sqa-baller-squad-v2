@@ -3,7 +3,7 @@
 *
 * @author Paul Kerrigan, Henry Zheng, Calvin Lapp
 * @since February 26, 2020
-* @version  1.0
+* @version  1.2
 * @name AuctionLib.cpp
 */
 
@@ -12,6 +12,7 @@
 #include <cctype>
 #include <string>
 #include <iostream>
+
 
 /**
  * Converts a string all to lowercase
@@ -23,6 +24,17 @@ std::string ToLower(std::string str) {
         [](unsigned char c){ return std::tolower(c); });
 
     return newString;
+}
+
+/**
+ * Prints out x spaces
+ */
+std::string Spaces(int numSpaces) {
+    std::string spaces = "";
+    for(int i = 0; i < numSpaces; i++) {
+        spaces += " ";
+    }
+    return spaces;
 }
 
 /**
