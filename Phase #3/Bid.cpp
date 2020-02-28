@@ -12,8 +12,16 @@
 #include "AuctionLib.h"
 #include "Writer.h"
 
-Bid::Bid(string** items, int itemCount, Users user){
-    const short MAX_ITEM_NAME_LENGTH = 19;
+Bid::Bid(){
+
+}
+
+float Bid::CalculateLowestBid(float currentPrice){
+    return (currentPrice * MINIMUM_BID_PERCENT);
+}
+
+void Bid::BidOnItem(string** items, int itemCount, Users user){
+const short MAX_ITEM_NAME_LENGTH = 19;
     const float MAX_BID = 999.99f;
     string itemName = "";
     string buffer = "";
@@ -203,14 +211,6 @@ Bid::Bid(string** items, int itemCount, Users user){
         //If yes, prompt user to input
         //Check for negative number, letters, 
         //end the main while loop
-}
-
-float Bid::CalculateLowestBid(float currentPrice){
-    return (currentPrice * MINIMUM_BID_PERCENT);
-}
-
-void Bid::BidOnItem(){
-    //Back end stuff
 }
 
 bool Bid::exitCmd(string buffer){

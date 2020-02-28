@@ -163,7 +163,8 @@ void Menu(Users user){
 			}else if(ToLower(choice).compare("bid") == 0){
 				std::cout << "Item Count Test: " << itemCount;
 				//itemCount is not being sent in correctly
-				Bid(items, itemCount, user);
+				Bid newbid;
+				newbid.BidOnItem(items, itemCount, user);
 			}
 		}else if(user.getUserType().compare(BUY_STANDARD) == 0) {
 			cout << "\nBS Enter Command: ";
