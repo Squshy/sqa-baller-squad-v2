@@ -20,6 +20,7 @@
 #include "Users.h"
 #include "Advertise.h"
 #include "AuctionLib.h"
+#include "Bid.h"
 
 using namespace std;
 
@@ -36,6 +37,7 @@ string trans = "";
 string** accounts;
 string** items;
 int userCount; 
+int itemCount = 0;
 
 /**
  * Main Function Definition
@@ -76,7 +78,6 @@ catch(const exception& ex)
 void Home(Users user){
 	
 	string choice = "";
-	const string CREATE1 = "Create";
 	const string CREATE = "create";
 	const string EXIT = "exit";
 	const string LOGIN = "login";
@@ -104,7 +105,7 @@ void Home(Users user){
 				 error = "\nYour Username or Password were entered incorrectly. Please Try again!\n";
 			 }
 			
-     	}else if(choice.compare(CREATE) == 0 || choice.compare(CREATE1) == 0){
+     	}else if(choice.compare(CREATE) == 0){
 
 			user.Create(accounts, userCount);
 			readInitialFiles(currentAccounts, availableItems);
@@ -144,6 +145,8 @@ void Menu(Users user){
 	Title();
 	cout << "\nWelcome " + user.getUserName() + "! Glad to see you are back :)";
 	while(ifLogout == true){
+//Commented out for testing bid
+		// if(user.getUserType().compare(fullstandardUser) == 0){
 
 		if(user.getUserType().compare(FULL_STANDARD) == 0){
 
@@ -157,8 +160,10 @@ void Menu(Users user){
             }else if(choice.compare("addcredit") == 0){
 				user.AddCredits(user);
 
-			}else if(choice.compare("changepassword") == 0){
-				
+			if(choice.compare("bid") == 0){
+				std::cout << "Item Count Test: " << itemCount;
+				//itemCount is not being sent in correctly
+				Bid(items, itemCount);
 			}
 		}else if(user.getUserType().compare(BUY_STANDARD) == 0){
 			cout << "\nBS Enter Command: ";
@@ -245,7 +250,6 @@ void readInitialFiles(string curr, string avail){
 	string temp;
 	string getUser, getPwd, getType;
 	float getCred;
-	int count = 0;
 
 	File.open(curr); //opening the file
 	if (!File) {
@@ -283,11 +287,11 @@ void readInitialFiles(string curr, string avail){
 }
 	while (!File.eof()){
 		getline(File, dump);
-		count++;
+		itemCount++;
 	}
 
-	items = new string*[count];
-	for(int z = 0; z < count; z++){
+	items = new string*[itemCount];
+	for(int z = 0; z < itemCount; z++){
     items[z] = new string[6];
 	}
 	File.clear();
@@ -295,19 +299,18 @@ void readInitialFiles(string curr, string avail){
 	while (!File.eof()) {
 
 		getline(File, temp);
-			items[j][0] = temp.substr(0, 4);
-			items[j][1] = temp.substr(5, 19);
-			items[j][2] = temp.substr(24, 16);
-			items[j][3] = temp.substr(40, 15);
-			items[j][4] = temp.substr(55, 4);
-			items[j][5] = temp.substr(60, 8);
+			items[j][0] = temp.substr(0, 4); // Item ID
+			items[j][1] = temp.substr(5, 19); // Item Name
+			items[j][2] = temp.substr(24, 16); // Seller name
+			items[j][3] = temp.substr(40, 15);  // Current Bidder's name
+			items[j][4] = temp.substr(55, 3); // Remaining days
+			items[j][5] = temp.substr(59, 8); // Current bid
 			j++;
 
 	}
 	//cout << items[0][0] + items[0][1] + items[0][2] + items[0][3] + items[0][4] + items[0][5] + "\n";
 
 	File.close(); //closing the file
-
 }
 
 

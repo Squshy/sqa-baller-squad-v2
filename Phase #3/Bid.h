@@ -37,8 +37,8 @@ class Bid : public Items{
         /**
          * Default Constructor For Bid class
          */ 
-        Bid();
-        
+        Bid(string**, int);
+
         /**
          * Constant to hold the minimum allowable percentage higher than the previous
          * bid    
@@ -49,7 +49,7 @@ class Bid : public Items{
          * Calculates the minimum amount the user has to be
          * (Current price * minimum_bid_percent)
          */ 
-        float CalculateLowestBid();
+        float CalculateLowestBid(float currentPrice);
         /**
          * User is Prompted to input an item name then selects from a list of items then input
          * an amount to bid on an item
