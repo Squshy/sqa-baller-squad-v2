@@ -54,6 +54,7 @@ class Writer{
         const string AVAILABLE_ITEMS_FILE = "aviailable_items_file.txt"; 
 
         /**
+
          * Writer Class method to write to the daily transaction file    
          */
         void WriteToDailyTransactionFile();
@@ -72,7 +73,11 @@ class Writer{
         /**
          * Writer class method to write to the user accounts file   
          */
-        void AddCreditToUser(Users);
+        void GenericWriteToDailyTransactionFile(Users, string);
+        /**
+         * Writer class method to write to the user accounts file   
+         */
+        void WriteAdvertiseToDailyTransactionFile(Users, string, int, float);
 
 
 };

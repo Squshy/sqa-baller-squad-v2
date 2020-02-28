@@ -8,5 +8,6 @@ Are you sure you want to delete user Test123?
 (Yes/No): NO
 
 ---------------------------------------------------------
-     Delete process aborted.  Test123 was not deleted.
+                Delete process aborted.  
+            Test123 was not deleted.
 =========================================================
