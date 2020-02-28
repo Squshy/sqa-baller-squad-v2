@@ -20,13 +20,25 @@ int itemLength = 0;
 string itemNameListCut = "";
 const string EXIT = "exit";
 int j = 0;
+string usernameplusspaces = "";
+
 Items::Items(){
 
 }
 
 void Items::CheckItems(string** items, int itemCount, Users user){
+    //Item stores the username + spaces for a total of 16 characters
+    //So we need to add spaces at the end of user's username until it's 16 characters long to compare properly
+    usernameplusspaces = user.getUserName();
+
+    for (int i = user.getUserName().length(); i < 16; i++){
+        usernameplusspaces += " ";
+    }
+    
     for (int i = 0; i < itemCount; i++){
-        if(user.getUserName().compare(items[i][2])){
+        //Compares username but right now item stores the username + spaces
+        //Either trim the spaces at the end or add spaces at the end of user input until it's 15 characters long
+        if(usernameplusspaces.compare(items[i][2]) == 0){
             bidListCount++;
         }
     }
@@ -35,13 +47,14 @@ void Items::CheckItems(string** items, int itemCount, Users user){
     for (int i = 0; i < bidListCount; i++){
         bidList[i] = new string[5];
     }
-    if (bidListCount = 0){
-        cout << "You have no items match";
-    }else {
+
+    if (bidListCount <= 0){
+        cout << "\nYou have no items in auction.";
+    }else if(bidListCount >= 1){
         for (int i = 0; i < itemCount; i++){
             //Get Item name, seller's name, remaining days and current bid when it matches
             //TODO: Check if seller's name is same as current user and don't add it in bidList
-            if(user.getUserName().compare(items[i][2]) == 0){ //We need i on the items array but we want to increment 
+            if(usernameplusspaces.compare(items[i][2]) == 0){ //We need i on the items array but we want to increment 
                 bidList[j][0] = items[i][1]; //Item ID
                 bidList[j][1] = items[i][1]; //Item Name
                 bidList[j][2] = items[i][3]; //Current bidder's name
