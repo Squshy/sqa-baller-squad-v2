@@ -65,20 +65,6 @@ void Writer::BidWriteToDailyTransactionFile(string itemName, string sellerName, 
 
 }
 
-void Writer::WriteToUserFile(string user, string pwd, string type){
-
-    string username;
-    string password;
-    string usertype;
-    string credits = "000000.00";
-    username = user;
-    username.append(15 - user.length(), ' ');
-    password = pwd;
-    password.append(12 - pwd.length(), ' ');
-    usertype = type;
-
-}
-
 // void Writer::WriteToUserFile(string user, string pwd, string type){
 
 //     string username;
@@ -106,7 +92,7 @@ void Writer::WriteToUserFile(string user, string pwd, string type){
 void Writer::GenericWriteToDailyTransactionFile(Users user, string transactionCode){
     fstream File;
     std::stringstream stream;
-    if(transactionCode == "00"){
+    if(transactionCode == "00" || transactionCode == "02"){
         stream << std::fixed << std::setprecision(2) << fixed << user.getCredits();
     }else{
         stream << std::fixed << std::setprecision(2) << fixed << user.getCreditCount();
