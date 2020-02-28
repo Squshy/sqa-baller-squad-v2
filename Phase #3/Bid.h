@@ -19,6 +19,7 @@
 #include <string>
 #include <fstream>
 #include "Items.h"
+#include "Users.h"
 
 using namespace std;
 
@@ -37,7 +38,7 @@ const string EXIT = "exit";
         /**
          * Default Constructor For Bid class
          */ 
-        Bid(string**, int);
+        Bid(string**, int, Users);
 
         /**
          * Constant to hold the minimum allowable percentage higher than the previous

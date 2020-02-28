@@ -10,8 +10,9 @@
 #include "Bid.h"
 #include <string>
 #include "AuctionLib.h"
+#include "Writer.h"
 
-Bid::Bid(string** items, int itemCount){
+Bid::Bid(string** items, int itemCount, Users user){
     const short MAX_ITEM_NAME_LENGTH = 19;
     const float MAX_BID = 999.99f;
     string itemName = "";
@@ -189,6 +190,10 @@ Bid::Bid(string** items, int itemCount){
                 bidAlphanumericCheck = false;
             } else {
                 std::cout << "\n I think it works";
+                Writer writer;
+                //Item Name, Seller's name, buyer's name, new bid all in string
+                cout << bidList[itemSelect][0] << bidList[itemSelect][1] << user.getUserName(), buffer;
+                writer.BidWriteToDailyTransactionFile(bidList[itemSelect][0], bidList[itemSelect][1], user.getUserName(), buffer);
                 bidCheck = true;
             }
         }
@@ -205,7 +210,7 @@ float Bid::CalculateLowestBid(float currentPrice){
 }
 
 void Bid::BidOnItem(){
-    
+    //Back end stuff
 }
 
 bool Bid::exitCmd(string buffer){

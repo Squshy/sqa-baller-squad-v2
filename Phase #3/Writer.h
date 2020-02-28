@@ -58,6 +58,10 @@ class Writer{
          */
         void WriteToDailyTransactionFile();
         /**
+         * Writer Class method to write to the daily transaction file    
+         */
+        void BidWriteToDailyTransactionFile(string, string, string, string);
+        /**
          * Writer class method to write to the user accounts file   
          */
         void WriteToUserFile(string, string, string);

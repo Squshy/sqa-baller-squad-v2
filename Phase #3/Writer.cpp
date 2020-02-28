@@ -50,13 +50,11 @@ void Writer::WriteToAvailableItemsFile(string id, string item, string seller, st
 
 }
 
-void Writer::WriteToDailyTransactionFile(){
+void Writer::BidWriteToDailyTransactionFile(string itemName, string sellerName, string buyerName, string bid){
 
-     string buffer;
-
+    string buffer;
     outFile.open(DAILY_TRANSACTION_FILE, ios::app);
-
-        
+    outFile << "\n02 " + itemName + " " + sellerName + " " + buyerName + " " + bid; 
 
 
 
