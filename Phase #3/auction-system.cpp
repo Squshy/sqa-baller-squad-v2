@@ -133,6 +133,8 @@ void Home(Users user){
  * This is where the user will enter in transactions and navigate the application
  */ 
 void Menu(Users user){
+	Admin admin;
+	Advertise ad;
 	string choice = "";
 	const string LOGOUT = "logout";
 	const string FULL_STANDARD = "FS";
@@ -154,7 +156,7 @@ void Menu(Users user){
 			cout << "\nFS Enter Command: ";
 			getline(cin, choice);
 			if(ToLower(choice).compare(ADVERTISE) == 0) {
-                Advertise ad;
+                
                 ad.AdvertiseItem(user);
             }else if(ToLower(choice).compare("addcredit") == 0) {
 				user.AddCredits(user);
@@ -187,8 +189,13 @@ void Menu(Users user){
 			}else if(ToLower(choice).compare("addcredit") == 0) {
 				
 			}else if(ToLower(choice).compare("delete") == 0) {
+
+                
+                admin.DeleteUser(accounts, userCount, user);
+
                 Admin admin;
                 admin.DeleteUser(accounts, userCount);
+
 			}else if(ToLower(choice).compare("refund") == 0) {
 				
 			}else if(ToLower(choice).compare("update") == 0) {

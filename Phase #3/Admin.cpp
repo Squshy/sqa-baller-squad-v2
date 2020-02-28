@@ -9,6 +9,7 @@
 
 #include "Admin.h"
 #include "Users.h"
+#include "Writer.h"
 #include "AuctionLib.h"
 #include <string>
 
@@ -30,11 +31,22 @@ void Admin::AddCredits(){
 void Admin::DeleteUser(std::string** users, int numUsers){
     string username, buffer = "";
     bool userFound, confirm = false;
+    Writer writer;
+    Users user;
+    string userType;
+    string credits;
+    const string code = "02";
 
     std::cout << "\nEnter username: ";
     getline(cin, username);
 
     // Loops through the users to see if the usernames match
+
+    for(int i = 0; i < numUsers; i++) if(users[i][0] == username){
+         userFound = true;
+         userType = users[i][2];
+         credits = users[i][3];
+    }
     userFound = MatchUser(users, numUsers, username);
 
     // If a user was found that matches the username
@@ -49,9 +61,13 @@ void Admin::DeleteUser(std::string** users, int numUsers){
             // User confirms to delete the user
             if(ToLower(buffer).compare(YES) == 0) {
                 LightHighlight();
+                
                 std::cout << Spaces(12)
                         << username << " has been successfully deleted!";
                 Highlight();
+                user.setUserName(username);
+                user.setUserType(userType);
+                writer.GenericWriteToDailyTransactionFile(user, code);
                 confirm = true;
             } else if(ToLower(buffer).compare(NO) == 0) {
                 LightHighlight();
