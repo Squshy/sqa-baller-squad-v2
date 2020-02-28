@@ -152,15 +152,14 @@ void Menu(Users user){
 
 			cout << "\nFS Enter Command: ";
 			getline(cin, choice);
-			if(choice.compare("bid") == 0){
-				
-			}else if(choice == "ADVERTISE") {
+			if(choice == "ADVERTISE") {
                 Advertise ad;
                 ad.AdvertiseItem();
             }else if(choice.compare("addcredit") == 0){
 				user.AddCredits(user);
 
-			if(choice.compare("bid") == 0){
+			
+			}else if(choice.compare("bid") == 0){
 				std::cout << "Item Count Test: " << itemCount;
 				//itemCount is not being sent in correctly
 				Bid(items, itemCount);
