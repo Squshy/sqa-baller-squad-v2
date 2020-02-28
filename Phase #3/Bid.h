@@ -19,6 +19,7 @@
 #include <string>
 #include <fstream>
 #include "Items.h"
+#include "Users.h"
 
 using namespace std;
 
@@ -28,7 +29,7 @@ using namespace std;
  * 
  */
 class Bid : public Items{
-
+const string EXIT = "exit";
 
     private:
         
@@ -37,7 +38,7 @@ class Bid : public Items{
         /**
          * Default Constructor For Bid class
          */ 
-        Bid(string**, int);
+        Bid(string**, int, Users);
 
         /**
          * Constant to hold the minimum allowable percentage higher than the previous
@@ -56,6 +57,7 @@ class Bid : public Items{
          */ 
         void BidOnItem();
 
+        bool exitCmd(string buffer);
 
 };
 

@@ -52,6 +52,32 @@ void Writer::WriteToAvailableItemsFile(string id, string item, string seller, st
 }
 
 
+void Writer::BidWriteToDailyTransactionFile(string itemName, string sellerName, string buyerName, string bid){
+
+    string buffer;
+    outFile.open(DAILY_TRANSACTION_FILE, ios::app);
+    outFile << "\n02 " + itemName + " " + sellerName + " " + buyerName + " " + bid; 
+
+
+
+
+    outFile.close();
+
+}
+
+void Writer::WriteToUserFile(string user, string pwd, string type){
+
+    string username;
+    string password;
+    string usertype;
+    string credits = "000000.00";
+    username = user;
+    username.append(15 - user.length(), ' ');
+    password = pwd;
+    password.append(12 - pwd.length(), ' ');
+    usertype = type;
+
+}
 
 // void Writer::WriteToUserFile(string user, string pwd, string type){
 
@@ -64,6 +90,7 @@ void Writer::WriteToAvailableItemsFile(string id, string item, string seller, st
 //     password = pwd;
 //     password.append(12 - pwd.length(), ' ');
 //     usertype = type;
+
 
 //     outFile.open(CURRENT_USER_ACCOUNTS_FILE, ios::app);
 
