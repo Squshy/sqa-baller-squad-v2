@@ -1,0 +1,155 @@
+\hypertarget{class_items}{}\doxysection{Items Class Reference}
+\label{class_items}\index{Items@{Items}}
+
+
+\mbox{\hyperlink{class_items}{Items}} Class @description\+: Class to represent all items in this system to be bid on and advertised.  
+
+
+
+
+{\ttfamily \#include $<$Items.\+h$>$}
+
+
+
+Inherited by \mbox{\hyperlink{class_advertise}{Advertise}}, and \mbox{\hyperlink{class_bid}{Bid}}.
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_items_ac5998b5a4b80bbc90144493866cfe684}{set\+Item\+Name}} (string item)
+\item 
+string \mbox{\hyperlink{class_items_a3d122c7849d2cc73021847331cd30df8}{get\+Item\+Name}} ()
+\item 
+void \mbox{\hyperlink{class_items_a435af0bc94ed74edfe6f9d76d8be3fd6}{set\+Item\+Id}} (string id)
+\item 
+string \mbox{\hyperlink{class_items_a0c388330de6695064785038ff35d3fd0}{get\+Item\+Id}} ()
+\item 
+void \mbox{\hyperlink{class_items_ac2dc3665562f22257a9c67f2830ecf81}{set\+Bid\+Price}} (float price)
+\item 
+float \mbox{\hyperlink{class_items_a2a53895088a607a55109cfa6a1784ec0}{get\+Bid\+Price}} ()
+\item 
+void \mbox{\hyperlink{class_items_a591173895bd97e68f3e2164e9365c9b1}{set\+Seller\+Name}} (string name)
+\item 
+string \mbox{\hyperlink{class_items_a1086ca155d8f4ba756a55a1bb5eca097}{get\+Seller\+Name}} ()
+\item 
+void \mbox{\hyperlink{class_items_a56c474a5835bd1a7988c18c0c2843652}{set\+Current\+Bidder\+Name}} (string name)
+\item 
+string \mbox{\hyperlink{class_items_a7d917bc725d48662f4c7a1c4282500b8}{get\+Current\+Bidder\+Name}} ()
+\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Items.\+cpp}\par
+{\em \mbox{\hyperlink{class_items}{Items}} Function Definition file for Our Auction Sales Service Project
+
+\begin{DoxyAuthor}{Author}
+Paul Kerrigan, Henry Zheng, Calvin Lapp 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+January 24, 2020 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+}\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_items_a3d368c3c7a14eb2a038682bd4da5d41a}{Items}} ()
+\item 
+void \mbox{\hyperlink{class_items_ae4319ad19f045a951691e7ee18d1a0ec}{Check\+Items}} ()
+\item 
+void \mbox{\hyperlink{class_items_a4f6b5600ab71a1b6f415229dc7324eca}{Find\+Items}} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_items}{Items}} Class @description\+: Class to represent all items in this system to be bid on and advertised. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_items_a3d368c3c7a14eb2a038682bd4da5d41a}\label{class_items_a3d368c3c7a14eb2a038682bd4da5d41a}} 
+\index{Items@{Items}!Items@{Items}}
+\index{Items@{Items}!Items@{Items}}
+\doxysubsubsection{\texorpdfstring{Items()}{Items()}}
+{\footnotesize\ttfamily Items\+::\+Items (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default Constructor for the \mbox{\hyperlink{class_items}{Items}} Class 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_items_ae4319ad19f045a951691e7ee18d1a0ec}\label{class_items_ae4319ad19f045a951691e7ee18d1a0ec}} 
+\index{Items@{Items}!CheckItems@{CheckItems}}
+\index{CheckItems@{CheckItems}!Items@{Items}}
+\doxysubsubsection{\texorpdfstring{CheckItems()}{CheckItems()}}
+{\footnotesize\ttfamily void Items\+::\+Check\+Items (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{class_items}{Items}} class method to allow a full standard user or sell standard user to check their auction items ~\newline
+ \mbox{\Hypertarget{class_items_a4f6b5600ab71a1b6f415229dc7324eca}\label{class_items_a4f6b5600ab71a1b6f415229dc7324eca}} 
+\index{Items@{Items}!FindItems@{FindItems}}
+\index{FindItems@{FindItems}!Items@{Items}}
+\doxysubsubsection{\texorpdfstring{FindItems()}{FindItems()}}
+{\footnotesize\ttfamily void Items\+::\+Find\+Items (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{class_items}{Items}} class method to search for an item based on id and item name \mbox{\Hypertarget{class_items_a2a53895088a607a55109cfa6a1784ec0}\label{class_items_a2a53895088a607a55109cfa6a1784ec0}} 
+\index{Items@{Items}!getBidPrice@{getBidPrice}}
+\index{getBidPrice@{getBidPrice}!Items@{Items}}
+\doxysubsubsection{\texorpdfstring{getBidPrice()}{getBidPrice()}}
+{\footnotesize\ttfamily float Items\+::get\+Bid\+Price (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for \mbox{\hyperlink{class_bid}{Bid}} Price private attribute \mbox{\Hypertarget{class_items_a7d917bc725d48662f4c7a1c4282500b8}\label{class_items_a7d917bc725d48662f4c7a1c4282500b8}} 
+\index{Items@{Items}!getCurrentBidderName@{getCurrentBidderName}}
+\index{getCurrentBidderName@{getCurrentBidderName}!Items@{Items}}
+\doxysubsubsection{\texorpdfstring{getCurrentBidderName()}{getCurrentBidderName()}}
+{\footnotesize\ttfamily string Items\+::get\+Current\+Bidder\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for Current Bidder Name private attribute \mbox{\Hypertarget{class_items_a0c388330de6695064785038ff35d3fd0}\label{class_items_a0c388330de6695064785038ff35d3fd0}} 
+\index{Items@{Items}!getItemId@{getItemId}}
+\index{getItemId@{getItemId}!Items@{Items}}
+\doxysubsubsection{\texorpdfstring{getItemId()}{getItemId()}}
+{\footnotesize\ttfamily string Items\+::get\+Item\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for Item Id private attribute \mbox{\Hypertarget{class_items_a3d122c7849d2cc73021847331cd30df8}\label{class_items_a3d122c7849d2cc73021847331cd30df8}} 
+\index{Items@{Items}!getItemName@{getItemName}}
+\index{getItemName@{getItemName}!Items@{Items}}
+\doxysubsubsection{\texorpdfstring{getItemName()}{getItemName()}}
+{\footnotesize\ttfamily string Items\+::get\+Item\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for Item Name private attribute \mbox{\Hypertarget{class_items_a1086ca155d8f4ba756a55a1bb5eca097}\label{class_items_a1086ca155d8f4ba756a55a1bb5eca097}} 
+\index{Items@{Items}!getSellerName@{getSellerName}}
+\index{getSellerName@{getSellerName}!Items@{Items}}
+\doxysubsubsection{\texorpdfstring{getSellerName()}{getSellerName()}}
+{\footnotesize\ttfamily string Items\+::get\+Seller\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for Seller Name private attribute \mbox{\Hypertarget{class_items_ac2dc3665562f22257a9c67f2830ecf81}\label{class_items_ac2dc3665562f22257a9c67f2830ecf81}} 
+\index{Items@{Items}!setBidPrice@{setBidPrice}}
+\index{setBidPrice@{setBidPrice}!Items@{Items}}
+\doxysubsubsection{\texorpdfstring{setBidPrice()}{setBidPrice()}}
+{\footnotesize\ttfamily void Items\+::set\+Bid\+Price (\begin{DoxyParamCaption}\item[{float}]{price }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Setter for \mbox{\hyperlink{class_bid}{Bid}} Price private attribute \mbox{\Hypertarget{class_items_a56c474a5835bd1a7988c18c0c2843652}\label{class_items_a56c474a5835bd1a7988c18c0c2843652}} 
+\index{Items@{Items}!setCurrentBidderName@{setCurrentBidderName}}
+\index{setCurrentBidderName@{setCurrentBidderName}!Items@{Items}}
+\doxysubsubsection{\texorpdfstring{setCurrentBidderName()}{setCurrentBidderName()}}
+{\footnotesize\ttfamily void Items\+::set\+Current\+Bidder\+Name (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Setter for Current Bidder Name private attribute \mbox{\Hypertarget{class_items_a435af0bc94ed74edfe6f9d76d8be3fd6}\label{class_items_a435af0bc94ed74edfe6f9d76d8be3fd6}} 
+\index{Items@{Items}!setItemId@{setItemId}}
+\index{setItemId@{setItemId}!Items@{Items}}
+\doxysubsubsection{\texorpdfstring{setItemId()}{setItemId()}}
+{\footnotesize\ttfamily void Items\+::set\+Item\+Id (\begin{DoxyParamCaption}\item[{string}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Setter for Item Id private attribute \mbox{\Hypertarget{class_items_ac5998b5a4b80bbc90144493866cfe684}\label{class_items_ac5998b5a4b80bbc90144493866cfe684}} 
+\index{Items@{Items}!setItemName@{setItemName}}
+\index{setItemName@{setItemName}!Items@{Items}}
+\doxysubsubsection{\texorpdfstring{setItemName()}{setItemName()}}
+{\footnotesize\ttfamily void Items\+::set\+Item\+Name (\begin{DoxyParamCaption}\item[{string}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Setter for Item Name private attribute \mbox{\Hypertarget{class_items_a591173895bd97e68f3e2164e9365c9b1}\label{class_items_a591173895bd97e68f3e2164e9365c9b1}} 
+\index{Items@{Items}!setSellerName@{setSellerName}}
+\index{setSellerName@{setSellerName}!Items@{Items}}
+\doxysubsubsection{\texorpdfstring{setSellerName()}{setSellerName()}}
+{\footnotesize\ttfamily void Items\+::set\+Seller\+Name (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Setter for Seller Name private attribute 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Ontario\+Tech/\+Year 1/\+Semester 2/\+Software quality Assurance/sqa-\/baller-\/squad-\/v2/\+Phase\#2/Items.\+h\item 
+D\+:/\+Ontario\+Tech/\+Year 1/\+Semester 2/\+Software quality Assurance/sqa-\/baller-\/squad-\/v2/\+Phase\#2/Items.\+cpp\end{DoxyCompactItemize}
