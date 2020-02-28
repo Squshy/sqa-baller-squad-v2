@@ -1,0 +1,17 @@
+=========================================================
+                        CREATE
+=========================================================
+
+Enter a username: BIGBOIDADDYDUDE
+
+Enter a password: password
+
+                    Available account types 
+
+Full Standard (FS)  Buy Standard (BS)  Sell Standard (SS)
+
+Enter an account type: ZZ
+
+---------------------------------------------------------
+                Invalid user type.
+=========================================================

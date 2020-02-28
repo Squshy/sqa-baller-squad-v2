@@ -1,0 +1,186 @@
+\hypertarget{class_users}{}\doxysection{Users Class Reference}
+\label{class_users}\index{Users@{Users}}
+
+
+\mbox{\hyperlink{class_users}{Users}} Class for user specific methods @description\+: Class to represent regular users for this system including full-\/standard, buy-\/standard and sell standard Contains functions to allow users to login, logout, change password, add credits to their account and if they are a new user they can create an account.  
+
+
+
+
+{\ttfamily \#include $<$Users.\+h$>$}
+
+
+
+Inherited by \mbox{\hyperlink{class_admin}{Admin}}.
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_users_a9d723db6acea0f6f5f60030b8174fa5a}{set\+User\+Name}} (string name)
+\item 
+string \mbox{\hyperlink{class_users_a1113a857236966f7c983ec94cd0c712d}{get\+User\+Name}} ()
+\item 
+void \mbox{\hyperlink{class_users_ab9a3ee2f4947b8795b8eab1dcf71e9da}{set\+Password}} (string pwd)
+\item 
+string \mbox{\hyperlink{class_users_ae7af722e9ae7acb285ad6e0926ada36e}{get\+Password}} ()
+\item 
+void \mbox{\hyperlink{class_users_ab7ce5adb58e3fe51d49e0df67d797450}{set\+User\+Type}} (string type)
+\item 
+string \mbox{\hyperlink{class_users_ac3633eb37bce94fbeefa8c62dc6435bf}{get\+User\+Type}} ()
+\item 
+void \mbox{\hyperlink{class_users_a94813e494d61c57e57fe638ab3f2ad73}{set\+Credits}} (float cred)
+\item 
+float \mbox{\hyperlink{class_users_aa9480423e5a114e42aa262c2eaa954fa}{get\+Credits}} ()
+\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Users.\+cpp}\par
+{\em \mbox{\hyperlink{class_users}{Users}} Function Definition file for Our Auction Sales Service Project
+
+\begin{DoxyAuthor}{Author}
+Paul Kerrigan, Henry Zheng, Calvin Lapp 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+January 24, 2020 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+}\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_users_af1f5c371c3f1e7f9b14210ed0d3718bc}{Users}} ()
+\item 
+bool \mbox{\hyperlink{class_users_a2de01cca0a170b2b594f13dbfb9ea438}{Login}} ()
+\item 
+bool \mbox{\hyperlink{class_users_a67c39b95759f19d1aa3cfd9c054986a2}{Validate\+Credentials}} ()
+\item 
+void \mbox{\hyperlink{class_users_adfc6523f30f7ee077a3b92040cfb400e}{Change\+Password}} ()
+\item 
+void \mbox{\hyperlink{class_users_af08befb21a18c39781a099d0f5c1f8ee}{Create}} ()
+\item 
+virtual void \mbox{\hyperlink{class_users_a05dbbc8fec81e37fd0265d72704c794d}{Add\+Credits}} ()
+\item 
+void \mbox{\hyperlink{class_users_adab738688dd3ae10fa62887bc62fdf13}{Read\+Users\+File}} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const float \mbox{\hyperlink{class_users_a33fefa1463f34d056023c3609203e60a}{S\+E\+S\+S\+I\+O\+N\+\_\+\+C\+R\+E\+D\+I\+T\+\_\+\+L\+I\+M\+IT}} = 9999.\+99
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_users}{Users}} Class for user specific methods @description\+: Class to represent regular users for this system including full-\/standard, buy-\/standard and sell standard Contains functions to allow users to login, logout, change password, add credits to their account and if they are a new user they can create an account. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_users_af1f5c371c3f1e7f9b14210ed0d3718bc}\label{class_users_af1f5c371c3f1e7f9b14210ed0d3718bc}} 
+\index{Users@{Users}!Users@{Users}}
+\index{Users@{Users}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{Users()}{Users()}}
+{\footnotesize\ttfamily Users\+::\+Users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default Constructor for the \mbox{\hyperlink{class_users}{Users}} Class 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_users_a05dbbc8fec81e37fd0265d72704c794d}\label{class_users_a05dbbc8fec81e37fd0265d72704c794d}} 
+\index{Users@{Users}!AddCredits@{AddCredits}}
+\index{AddCredits@{AddCredits}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{AddCredits()}{AddCredits()}}
+{\footnotesize\ttfamily void Users\+::\+Add\+Credits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\hyperlink{class_users}{Users}} Class Method to add credits to a user account 
+
+Reimplemented in \mbox{\hyperlink{class_admin_a14bff5f201b7ef7d460a2261a06d9377}{Admin}}.
+
+\mbox{\Hypertarget{class_users_adfc6523f30f7ee077a3b92040cfb400e}\label{class_users_adfc6523f30f7ee077a3b92040cfb400e}} 
+\index{Users@{Users}!ChangePassword@{ChangePassword}}
+\index{ChangePassword@{ChangePassword}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{ChangePassword()}{ChangePassword()}}
+{\footnotesize\ttfamily void Users\+::\+Change\+Password (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{class_users}{Users}} Class Method to change the user password \mbox{\Hypertarget{class_users_af08befb21a18c39781a099d0f5c1f8ee}\label{class_users_af08befb21a18c39781a099d0f5c1f8ee}} 
+\index{Users@{Users}!Create@{Create}}
+\index{Create@{Create}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily void Users\+::\+Create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{class_users}{Users}} Class Method for creating an account \mbox{\Hypertarget{class_users_aa9480423e5a114e42aa262c2eaa954fa}\label{class_users_aa9480423e5a114e42aa262c2eaa954fa}} 
+\index{Users@{Users}!getCredits@{getCredits}}
+\index{getCredits@{getCredits}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{getCredits()}{getCredits()}}
+{\footnotesize\ttfamily float Users\+::get\+Credits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for getting User Credits private attribute \mbox{\Hypertarget{class_users_ae7af722e9ae7acb285ad6e0926ada36e}\label{class_users_ae7af722e9ae7acb285ad6e0926ada36e}} 
+\index{Users@{Users}!getPassword@{getPassword}}
+\index{getPassword@{getPassword}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{getPassword()}{getPassword()}}
+{\footnotesize\ttfamily string Users\+::get\+Password (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for password private attribute \mbox{\Hypertarget{class_users_a1113a857236966f7c983ec94cd0c712d}\label{class_users_a1113a857236966f7c983ec94cd0c712d}} 
+\index{Users@{Users}!getUserName@{getUserName}}
+\index{getUserName@{getUserName}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{getUserName()}{getUserName()}}
+{\footnotesize\ttfamily string Users\+::get\+User\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for User Name private attribute \mbox{\Hypertarget{class_users_ac3633eb37bce94fbeefa8c62dc6435bf}\label{class_users_ac3633eb37bce94fbeefa8c62dc6435bf}} 
+\index{Users@{Users}!getUserType@{getUserType}}
+\index{getUserType@{getUserType}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{getUserType()}{getUserType()}}
+{\footnotesize\ttfamily string Users\+::get\+User\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter for User Type private attribute \mbox{\Hypertarget{class_users_a2de01cca0a170b2b594f13dbfb9ea438}\label{class_users_a2de01cca0a170b2b594f13dbfb9ea438}} 
+\index{Users@{Users}!Login@{Login}}
+\index{Login@{Login}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{Login()}{Login()}}
+{\footnotesize\ttfamily bool Users\+::\+Login (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{class_users}{Users}} Class Method for Login \mbox{\Hypertarget{class_users_adab738688dd3ae10fa62887bc62fdf13}\label{class_users_adab738688dd3ae10fa62887bc62fdf13}} 
+\index{Users@{Users}!ReadUsersFile@{ReadUsersFile}}
+\index{ReadUsersFile@{ReadUsersFile}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{ReadUsersFile()}{ReadUsersFile()}}
+{\footnotesize\ttfamily void Users\+::\+Read\+Users\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reads the current user accounts file at the start before login \mbox{\Hypertarget{class_users_a94813e494d61c57e57fe638ab3f2ad73}\label{class_users_a94813e494d61c57e57fe638ab3f2ad73}} 
+\index{Users@{Users}!setCredits@{setCredits}}
+\index{setCredits@{setCredits}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{setCredits()}{setCredits()}}
+{\footnotesize\ttfamily void Users\+::set\+Credits (\begin{DoxyParamCaption}\item[{float}]{cred }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Setter for setting User Credits private attribute \mbox{\Hypertarget{class_users_ab9a3ee2f4947b8795b8eab1dcf71e9da}\label{class_users_ab9a3ee2f4947b8795b8eab1dcf71e9da}} 
+\index{Users@{Users}!setPassword@{setPassword}}
+\index{setPassword@{setPassword}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{setPassword()}{setPassword()}}
+{\footnotesize\ttfamily void Users\+::set\+Password (\begin{DoxyParamCaption}\item[{string}]{pwd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Setter for password private attribute \mbox{\Hypertarget{class_users_a9d723db6acea0f6f5f60030b8174fa5a}\label{class_users_a9d723db6acea0f6f5f60030b8174fa5a}} 
+\index{Users@{Users}!setUserName@{setUserName}}
+\index{setUserName@{setUserName}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{setUserName()}{setUserName()}}
+{\footnotesize\ttfamily void Users\+::set\+User\+Name (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Setter for User Name private attribute \mbox{\Hypertarget{class_users_ab7ce5adb58e3fe51d49e0df67d797450}\label{class_users_ab7ce5adb58e3fe51d49e0df67d797450}} 
+\index{Users@{Users}!setUserType@{setUserType}}
+\index{setUserType@{setUserType}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{setUserType()}{setUserType()}}
+{\footnotesize\ttfamily void Users\+::set\+User\+Type (\begin{DoxyParamCaption}\item[{string}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Setter for User Type private attribute \mbox{\Hypertarget{class_users_a67c39b95759f19d1aa3cfd9c054986a2}\label{class_users_a67c39b95759f19d1aa3cfd9c054986a2}} 
+\index{Users@{Users}!ValidateCredentials@{ValidateCredentials}}
+\index{ValidateCredentials@{ValidateCredentials}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{ValidateCredentials()}{ValidateCredentials()}}
+{\footnotesize\ttfamily bool Users\+::\+Validate\+Credentials (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{class_users}{Users}} Class Method for validating their credentials on login 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_users_a33fefa1463f34d056023c3609203e60a}\label{class_users_a33fefa1463f34d056023c3609203e60a}} 
+\index{Users@{Users}!SESSION\_CREDIT\_LIMIT@{SESSION\_CREDIT\_LIMIT}}
+\index{SESSION\_CREDIT\_LIMIT@{SESSION\_CREDIT\_LIMIT}!Users@{Users}}
+\doxysubsubsection{\texorpdfstring{SESSION\_CREDIT\_LIMIT}{SESSION\_CREDIT\_LIMIT}}
+{\footnotesize\ttfamily const float Users\+::\+S\+E\+S\+S\+I\+O\+N\+\_\+\+C\+R\+E\+D\+I\+T\+\_\+\+L\+I\+M\+IT = 9999.\+99}
+
+The amount of credit a user can add per login session 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Ontario\+Tech/\+Year 1/\+Semester 2/\+Software quality Assurance/sqa-\/baller-\/squad-\/v2/\+Phase\#2/Users.\+h\item 
+D\+:/\+Ontario\+Tech/\+Year 1/\+Semester 2/\+Software quality Assurance/sqa-\/baller-\/squad-\/v2/\+Phase\#2/Users.\+cpp\end{DoxyCompactItemize}
