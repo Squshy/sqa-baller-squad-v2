@@ -50,50 +50,41 @@ void Writer::WriteToAvailableItemsFile(string id, string item, string seller, st
 
 }
 
-void Writer::WriteToDailyTransactionFile(){
-
-     string buffer;
-
-    outFile.open(DAILY_TRANSACTION_FILE, ios::app);
-
-        
 
 
+// void Writer::WriteToUserFile(string user, string pwd, string type){
 
+//     string username;
+//     string password;
+//     string usertype;
+//     string credits = "000000.00";
+//     username = user;
+//     username.append(15 - user.length(), ' ');
+//     password = pwd;
+//     password.append(12 - pwd.length(), ' ');
+//     usertype = type;
 
-    outFile.close();
-
-}
-
-void Writer::WriteToUserFile(string user, string pwd, string type){
-
-    string username;
-    string password;
-    string usertype;
-    string credits = "000000.00";
-    username = user;
-    username.append(15 - user.length(), ' ');
-    password = pwd;
-    password.append(12 - pwd.length(), ' ');
-    usertype = type;
-
-    outFile.open(CURRENT_USER_ACCOUNTS_FILE, ios::app);
+//     outFile.open(CURRENT_USER_ACCOUNTS_FILE, ios::app);
 
         
-        outFile << "\n" + username + " " << password + " " << usertype + " " << credits;
+//         outFile << "\n" + username + " " << password + " " << usertype + " " << credits;
 
 
 
-    outFile.close();
+//     outFile.close();
 
-}
+// }
 
 void Writer::GenericWriteToDailyTransactionFile(Users user, string transactionCode){
     fstream File;
 	int fileNumber;
     int i = 0;
     std::stringstream stream;
-    stream << std::fixed << std::setprecision(2) << fixed << user.getCreditCount();
+    if(transactionCode == "00"){
+        stream << std::fixed << std::setprecision(2) << fixed << user.getCredits();
+    }else{
+        stream << std::fixed << std::setprecision(2) << fixed << user.getCreditCount();
+    }
     string credHolder = stream.str();
     string code = transactionCode;
     string username = user.getUserName();
@@ -103,13 +94,14 @@ void Writer::GenericWriteToDailyTransactionFile(Users user, string transactionCo
     username.append(15 - user.getUserName().length(), ' ');
     password.append(12 - user.getPassword().length(), ' ');
     cred.insert(cred.begin(), 9 - credHolder.length(), '0');
+    
 
 	File.open(DAILY_TRANSACTION_FILE, ios::app); //opening the file
 	if (!File) {
         cerr << "Unable to open file";
     }
 
-     File << "\n" << code << " " << username << " " << userType << " " << cred << endl;
+     File << "\n" << code << " " << username << " " << userType << " " << cred;
 	 File.close(); //closing the file
 
 

@@ -50,6 +50,7 @@ void Users::ChangePassword(){
 void Users::Create(string** users, int userCount){
 
 	Writer writer;
+	Users user;
 	string username;
 	string password;
 	string userType;
@@ -57,6 +58,7 @@ void Users::Create(string** users, int userCount){
 	const string BUY_STANDARD = "BS";
 	const string SELL_STANDARD = "SS";
 	const string FULL_STANDARD = "FS";
+	const string code = "01";
 	
 while(validation == false){
 	cout << "Enter Username: ";
@@ -93,7 +95,10 @@ while(validation == false){
 		
 	}else{
 		cout << "User Successfully Created\n";
-		writer.WriteToUserFile(username, password, userType);
+		user.setUserName(username);
+		user.setPassword(password);
+		user.setUserType(userType);
+		writer.GenericWriteToDailyTransactionFile(user, code);
 		validation = true;
 	}
 }
@@ -117,7 +122,14 @@ void Users::AddCredits(Users user){
 		user.setCreditCount(sum);
 	}
 	
-	writer.AddCreditToUser(user, code);
+	writer.GenericWriteToDailyTransactionFile(user, code);
+
+}
+
+void Users::EndSession(Users user){
+	const string code = "00";
+	Writer writer;
+	writer.GenericWriteToDailyTransactionFile(user, code);
 
 }
 

@@ -129,6 +129,10 @@ class Users{
 		 * Users Class Method to add credits to a user account
 		 */ 
 		virtual void AddCredits(Users);
+		/**
+		 * Users Class Method to end session
+		 */ 
+		void EndSession(Users);
 
 };
 

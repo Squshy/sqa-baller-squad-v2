@@ -203,6 +203,7 @@ void Menu(Users user){
 
 		if(ToLower(choice).compare(LOGOUT) == 0){
 			
+			user.EndSession(user);
 			ifLogout = false;
 			
 		}
