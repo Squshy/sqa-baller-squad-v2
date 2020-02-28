@@ -17,6 +17,7 @@
 #include <cstdio> 	
 #include <cstdlib>
 #include <string>
+#include "Users.h"
 
 using namespace std;
 
@@ -108,13 +109,14 @@ class Items{
 		/**
          * Items class method to allow a full standard user or sell standard user to check their auction items   
          */
-		void CheckItems();     
+		void CheckItems(string** items, int itemCount, Users user);     
 
 		/**
 		 * Items class method to search for an item based on id and item name 
 		 */ 
-        void FindItems(); 
+        void FindItems(string** items, int itemCount); 
 
+		bool exitCmd(string buffer);
 };
 
 
