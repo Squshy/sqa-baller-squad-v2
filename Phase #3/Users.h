@@ -120,7 +120,7 @@ class Users{
 		/**
 		 * Users Class Method to change the user password
 		 */ 
-		void ChangePassword();
+		void ChangePassword(Users);
 		/**
 		 * Users Class Method for creating an account
 		 */ 

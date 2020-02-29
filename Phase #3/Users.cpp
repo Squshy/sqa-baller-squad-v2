@@ -43,7 +43,12 @@ bool Users::Login(string** users, int userCount){
      	
 }
 
-void Users::ChangePassword(){
+void Users::ChangePassword(Users user){
+	string username, buffer = "";
+	std::cout << endl
+              << "Enter new Password: ";
+    getline(cin, buffer);
+	
 
 }
 

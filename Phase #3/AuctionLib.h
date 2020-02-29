@@ -20,8 +20,8 @@ const std::string DISABLE = "disable";
 const std::string ENABLE = "enable";
 const std::string DISABLED_CODE = "DS";
 const short MAX_ITEM_NAME_LENGTH = 19;
-const short MAX_USER_NAME_LENGTH = 19;
-const short MAX_PASSWORD_LENGTH = 19;
+const short MAX_USER_NAME_LENGTH = 15;
+const short MAX_PASSWORD_LENGTH = 12;
 const short MAX_CREDIT_LENGTH = 9;
 
 std::string ToLower(std::string str);

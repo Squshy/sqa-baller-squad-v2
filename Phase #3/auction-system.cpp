@@ -191,7 +191,6 @@ void Menu(Users user){
 			}else if(ToLower(choice).compare("delete") == 0) {
 
                 
-                admin.DeleteUser(accounts, userCount, user);
 
                 Admin admin;
                 admin.DeleteUser(accounts, userCount);
