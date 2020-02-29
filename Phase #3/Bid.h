@@ -38,7 +38,7 @@ const string EXIT = "exit";
         /**
          * Default Constructor For Bid class
          */ 
-        Bid(string**, int, Users);
+        Bid();
 
         /**
          * Constant to hold the minimum allowable percentage higher than the previous
@@ -55,7 +55,7 @@ const string EXIT = "exit";
          * User is Prompted to input an item name then selects from a list of items then input
          * an amount to bid on an item
          */ 
-        void BidOnItem();
+        void BidOnItem(string** item, int itemCount, Users user);
 
         bool exitCmd(string buffer);
 

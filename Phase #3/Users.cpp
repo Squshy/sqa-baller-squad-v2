@@ -43,7 +43,9 @@ bool Users::Login(string** users, int userCount){
      	
 }
 
-void Users::ChangePassword(){
+void Users::ChangePassword(Users user){
+	
+
 
 }
 

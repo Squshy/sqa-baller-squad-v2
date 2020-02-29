@@ -67,6 +67,7 @@ void Admin::DeleteUser(std::string** users, int numUsers){
                 Highlight();
                 user.setUserName(username);
                 user.setUserType(userType);
+                user.setCredits(stof(credits));
                 writer.GenericWriteToDailyTransactionFile(user, code);
                 confirm = true;
             } else if(ToLower(buffer).compare(NO) == 0) {
@@ -101,8 +102,10 @@ void Admin::Update(string** users, int numUsers){
 }
 
 void Admin::EnableUser(string** users, int numUsers){
+    const string code = "07";
     string buffer = "";
     Users user;
+    Writer writer;
     bool userFound, confirm = false;
     std::cout << endl
               << "Which user would you like to enable?: ";
@@ -113,7 +116,8 @@ void Admin::EnableUser(string** users, int numUsers){
             userFound = true;
             user.setUserName(users[i][0]);
             user.setUserType(users[i][2]);
-        } 
+            user.setCredits(stof(users[i][3]));
+        }
     } 
 
     if(!userFound) {
@@ -134,6 +138,7 @@ void Admin::EnableUser(string** users, int numUsers){
                 std::cout << user.getUserName() << "'s account has been enabled!";
                 Highlight();
                 // Enable the man
+                writer.GenericWriteToDailyTransactionFile(user, code);
             } else if(ToLower(buffer).compare(NO) == 0) {
                 LightHighlight();
                 std::cout << user.getUserName() << "'s account was not enabled!";
@@ -149,8 +154,10 @@ void Admin::EnableUser(string** users, int numUsers){
 }
 
 void Admin::DisableUser(string** users, int numUsers){
+    const string code = "08";
     string buffer = "";
     Users user;
+    Writer writer;
     bool userFound, confirm = false;
     std::cout << endl
               << "Which user would you like to disable?: ";
@@ -161,6 +168,7 @@ void Admin::DisableUser(string** users, int numUsers){
             userFound = true;
             user.setUserName(users[i][0]);
             user.setUserType(users[i][2]);
+            user.setCredits(stof(users[i][3]));
         } 
     } 
 
@@ -183,7 +191,8 @@ void Admin::DisableUser(string** users, int numUsers){
                     std::cout << user.getUserName() << "'s account has been disabled!";
                     Highlight();
                     confirm = true;
-                    // Delete the man
+                    // Disable the man
+                    writer.GenericWriteToDailyTransactionFile(user, code);
                 } else if(ToLower(buffer).compare(NO) == 0) {
                     LightHighlight();
                     std::cout << user.getUserName() << "'s account was not disabled!";
