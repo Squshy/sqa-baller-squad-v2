@@ -43,7 +43,7 @@ do
 ​
 ​
         # Remove the temporary transaction file
-        #rm $t/trans.out
+        rm $t/trans.out
     fi
     
     # Clear the terminal at the end of the run
