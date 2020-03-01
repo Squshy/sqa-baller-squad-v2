@@ -17,8 +17,6 @@ void AdTitle();
 
 void Advertise::AdvertiseItem(Users self){
     Writer writer;
-    const float MAX_BID = 999.99f;
-    const float MIN_BID = 0.01f;
     const short MAX_AUC_DAYS = 100;
     const short MIN_AUC_DAYS = 1;
 
@@ -28,15 +26,20 @@ void Advertise::AdvertiseItem(Users self){
     bool validAd = false;
 
     AdTitle();
-    while(validAd == false)
-    {
+   // while(validAd == false)
+    //{
         std::cout << "\nItem name: ";
         getline(cin, buffer);
         if(buffer.length() > MAX_ITEM_NAME_LENGTH) {
             LightHighlight();
             std::cout << "Item name must be " << MAX_ITEM_NAME_LENGTH << " characters or less.";
             Highlight();
-        } else {
+        }else if(IsString(buffer) == true){
+            LightHighlight();
+            cout << "The Item name cannot only contain numbers.";
+            Highlight();
+            
+        }else {
             itemName = buffer;
             buffer = "";
             std::cout << "\nMinimum bid: $";
@@ -101,7 +104,7 @@ void Advertise::AdvertiseItem(Users self){
                 Highlight();
             }
         }
-    }
+    
 }
 
 void AdTitle() {

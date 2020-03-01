@@ -103,8 +103,8 @@ class Users{
 		/**
 		 * Setter for setting User Credits private attribute
 		 */
-		void setCreditCount(float cred){
-			creditCount = cred;
+		void setCreditCount(float credit){
+			creditCount = credit;
 		}
 		/**
 		 * Getter for getting User Credits private attribute
@@ -120,7 +120,7 @@ class Users{
 		/**
 		 * Users Class Method to change the user password
 		 */ 
-		void ChangePassword(Users);
+		void ChangePassword(Users, string);
 		/**
 		 * Users Class Method for creating an account
 		 */ 

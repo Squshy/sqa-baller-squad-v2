@@ -59,7 +59,7 @@ try
 {
 	readInitialFiles(currentAccounts, availableItems);
 	Home(user);
-	PressEnterToExit();	
+		
 	
 }
 // to catch the possible exceptions
@@ -87,7 +87,7 @@ void Home(Users user){
 	
 	while(ifExit == true){
 		
-		ClearScreen();
+		//ClearScreen();
 		cout << error;
 		Title();
 		cout << "\nPlease Type login, create or exit!";
@@ -95,21 +95,29 @@ void Home(Users user){
 		getline(cin, choice);
 	
 	    if(ToLower(choice).compare(LOGIN) == 0){
-			ClearScreen();
-			Title();
+			//ClearScreen();
+			//Title();
      		login = user.Login(accounts, userCount);
 			 if(login == true) {
-				 Menu(user);
-				 ClearScreen();
+				 if(user.getUserType().compare("--") == 0){
+					 	error = "\nUser has not been approved yet";
+				 }else if(user.getUserType().compare(DISABLED_CODE) == 0){
+					 	error = "\nUser is disabled";
+				 }else{
+					Menu(user);
+				 }
+				 
+				 //ClearScreen();
 			 }else {
 				 //ClearScreen();
+				 
 				 error = "\nYour Username or Password were entered incorrectly. Please Try again!\n";
 			 }
 			
-     	}else if(choice.compare(CREATE) == 0){
+     	}else if(ToLower(choice).compare(CREATE) == 0){
 
 			user.Create(accounts, userCount);
-			readInitialFiles(currentAccounts, availableItems);
+			//readInitialFiles(currentAccounts, availableItems);
 
      	}else if(ToLower(choice).compare(EXIT) == 0){
      		ifExit = false;
@@ -135,6 +143,8 @@ void Home(Users user){
 void Menu(Users user){
 	Admin admin;
 	Advertise ad;
+	Items newItem;
+	Bid newbid;
 	string choice = "";
 	const string LOGOUT = "logout";
 	const string FULL_STANDARD = "FS";
@@ -142,14 +152,14 @@ void Menu(Users user){
 	const string ADMIN = "AA";
 	const string SELL_STANDARD = "SS";
     const string ADVERTISE = "advertise";
+	const string CHANGE_PASSWORD = "changepassword";
+	const string UPDATE = "update";
 	bool ifLogout = true;
-	ClearScreen();
+	//sClearScreen();
 	std::cin.ignore( std::numeric_limits <std::streamsize> ::max(), '\n' );
-	Title();
+	//Title();
 	cout << "\nWelcome " + user.getUserName() + "! Glad to see you are back :)";
 	while(ifLogout == true){
-//Commented out for testing bid
-		// if(user.getUserType().compare(fullstandardUser) == 0){
 
 		if(user.getUserType().compare(FULL_STANDARD) == 0) {
 
@@ -159,31 +169,90 @@ void Menu(Users user){
                 
                 ad.AdvertiseItem(user);
             }else if(ToLower(choice).compare("addcredit") == 0) {
+				
 				user.AddCredits(user);
 
-			
 			}else if(ToLower(choice).compare("bid") == 0){
-				Bid newbid;
+				
 				newbid.BidOnItem(items, itemCount, user);
-			}else if (ToLower(choice).compare("check item") == 0){
-				Items newItem;
+			}else if (ToLower(choice).compare("checkitems") == 0){
+				
 				newItem.CheckItems(items, itemCount, user);
 			}else if (ToLower(choice).compare("find item") == 0){
-				Items newItem;
+				
 				newItem.FindItems(items, itemCount);
-			}
+			}else if(ToLower(choice).compare(CHANGE_PASSWORD) == 0){
+				user.ChangePassword(user, currentAccounts);
+			}else if(ToLower(choice).compare("delete") == 0) {
+
+                Highlight();
+				cout << "Access Denied: You are a Full-Standard user";
+				Highlight();
+
+			}else if(ToLower(choice).compare("update") == 0) {
+                
+                Highlight();
+				cout << "Access Denied: You are a Full-Standard user";
+				Highlight();
+			}else if(ToLower(choice).compare("refund") == 0) {
+				Highlight();
+				cout << "Access Denied: You are a Full-Standard user";
+				Highlight();
+			} 
+
 		}else if(user.getUserType().compare(BUY_STANDARD) == 0) {
 			cout << "\nBS Enter Command: ";
 			getline(cin, choice);
 			if(ToLower(choice).compare("bid") == 0){
 				
-			}
+			}else if(ToLower(choice).compare(CHANGE_PASSWORD) == 0){
+				user.ChangePassword(user, currentAccounts);
+			}else if(ToLower(choice).compare("advertise") == 0) {
+				Highlight();
+				cout << "Access Denied: You are a Buy-Standard user";
+				Highlight();
+			}else if(ToLower(choice).compare("delete") == 0) {
+
+                Highlight();
+				cout << "Access Denied: You are a Buy-Standard user";
+				Highlight();
+
+			}else if(ToLower(choice).compare("update") == 0) {
+                
+                Highlight();
+				cout << "Access Denied: You are a Buy-Standard user";
+				Highlight();
+			}else if(ToLower(choice).compare("refund") == 0) {
+				Highlight();
+				cout << "Access Denied: You are a Buy-Standard user";
+				Highlight();
+			} 
 		}else if(user.getUserType().compare(SELL_STANDARD) == 0) {
 			cout << "\nSS Enter Command: ";
 			getline(cin, choice);
             if(ToLower(choice).compare("advertise") == 0) {
 
-			}
+			}else if(ToLower(choice).compare(CHANGE_PASSWORD) == 0){
+				user.ChangePassword(user, currentAccounts);
+			}else if(ToLower(choice).compare("delete") == 0) {
+
+                Highlight();
+				cout << "Access Denied: You are a Sell-Standard user";
+				Highlight();
+
+			}else if(ToLower(choice).compare("update") == 0) {
+                
+                Highlight();
+				cout << "Access Denied: You are a Sell-Standard user";
+				Highlight();
+			}else if(ToLower(choice).compare("refund") == 0) {
+				Highlight();
+				cout << "Access Denied: You are a Sell-Standard user";
+				Highlight();
+			}else if (ToLower(choice).compare("checkitems") == 0){
+				
+				newItem.CheckItems(items, itemCount, user);
+			} 
 		}else if(user.getUserType().compare(ADMIN) == 0) {
 			cout << "\nAA Enter Command: ";
 			getline(cin, choice);
@@ -195,19 +264,18 @@ void Menu(Users user){
 				
 			}else if(ToLower(choice).compare("delete") == 0) {
 
-                
-
-                Admin admin;
                 admin.DeleteUser(accounts, userCount);
 
 			}else if(ToLower(choice).compare("refund") == 0) {
 				
 			}else if(ToLower(choice).compare("update") == 0) {
-                Admin admin;
+                
                 admin.Update(accounts, userCount);
-			}else if(ToLower(choice).compare("changepassword") == 0) {
-				
-			}
+			}else if(ToLower(choice).compare(CHANGE_PASSWORD) == 0){
+				admin.ChangePassword(user, currentAccounts);
+			}else if(ToLower(choice).compare(UPDATE) == 0){
+				admin.Update(accounts, userCount);
+			} 
 
 		}
 
@@ -245,7 +313,7 @@ void ClearScreen()
  */  
 void Title(){
 
-	cout     << "==========================================" << endl
+	cout     << "\n==========================================" << endl
 		 	 << "      SQA Baller Squad Auction House"       << endl
 		 	 << "==========================================" << endl;
 
@@ -254,12 +322,13 @@ void Title(){
 void readInitialFiles(string curr, string avail){
 
 	ifstream File;
+	std::stringstream stream;
 	int i = 0;
 	int j = 0;
 	string dump;
 	string temp;
 	string getUser, getPwd, getType;
-	float getCred;
+	string getCred;
 
 	File.open(curr); //opening the file
 	if (!File) {
@@ -278,12 +347,13 @@ void readInitialFiles(string curr, string avail){
 	File.clear();
 	File.seekg(0, ios::beg);
 	while (File >> getUser >> getPwd >> getType >> getCred) {
-			
+			//stream << std::fixed << std::setprecision(2) << fixed << getCred;
 			//cout << " " + getUser;
 			accounts[i][0] = getUser;
 			accounts[i][1] = getPwd;
 			accounts[i][2] = getType;
-			accounts[i][3] = to_string(getCred);
+			accounts[i][3] = getCred;
+			//cout << getCred;
 			//cout << accounts[i][0] + " " + accounts[i][1] + " " + accounts[i][2] + " " + accounts[i][3] + "\n";
 			i++;
 

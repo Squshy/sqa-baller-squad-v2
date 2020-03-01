@@ -55,7 +55,7 @@ class Admin : public Users{
         /**
          * Method to refund a user from a transaction
          */ 
-        void Refund(Items);
+        void Refund(string**, int);
         /**
          * Overloaded function to add credits to a users account
          */ 

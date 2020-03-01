@@ -29,7 +29,6 @@ using namespace std;
  * 
  */
 class Bid : public Items{
-const string EXIT = "exit";
 
     private:
         
@@ -57,7 +56,7 @@ const string EXIT = "exit";
          */ 
         void BidOnItem(string** item, int itemCount, Users user);
 
-        bool exitCmd(string buffer);
+        bool exitCmd(std::string buffer);
 
 };
 

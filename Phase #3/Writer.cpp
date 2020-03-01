@@ -65,37 +65,60 @@ void Writer::BidWriteToDailyTransactionFile(string itemName, string sellerName, 
 
 }
 
-// void Writer::WriteToUserFile(string user, string pwd, string type){
+void Writer::WriteToChangePassword(Users user, string file){
 
-//     string username;
-//     string password;
-//     string usertype;
-//     string credits = "000000.00";
-//     username = user;
-//     username.append(15 - user.length(), ' ');
-//     password = pwd;
-//     password.append(12 - pwd.length(), ' ');
-//     usertype = type;
+    fstream File;
+	int fileNumber;
+    int i = 0;
+    string getUser;
+    string getPwd;
+    string getType;
+    float getCred;
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << fixed << user.getCredits();
+    string credHolder = stream.str();
+    string username;
+    string password;
+    string userType;
+	string cred;
+     username = user.getUserName();
+     username.append(15 - user.getUserName().length(), ' ');
+     password = user.getPassword();
+     password.append(12 - user.getPassword().length(), ' ');
+     userType = user.getUserType();
+     cred = credHolder;
+     cred.insert(cred.begin(), 9 - credHolder.length(), '0');
 
+	File.open(file); //opening the file
+	if (!File) {
+        cerr << "Unable to open file";
+    }
+		
+	//cout << username;
+	while (File >> getUser >> getPwd >> getType >> getCred) {	
+			if(user.getUserName().compare(getUser) == 0){
+                fileNumber = i;
+            }
+			i++;
+	}
+     File.clear();
+	 File.seekg(0, ios::beg);
+    
+     // Position the put pointer -- switching from reading to writing.
+     File.seekp(fileNumber * 43);
 
-//     outFile.open(CURRENT_USER_ACCOUNTS_FILE, ios::app);
+     File << username << " " << password << " " << userType << " " << cred << endl;
+	 File.close(); //closing the file
 
-        
-//         outFile << "\n" + username + " " << password + " " << usertype + " " << credits;
-
-
-
-//     outFile.close();
-
-// }
+}
 
 void Writer::GenericWriteToDailyTransactionFile(Users user, string transactionCode){
     fstream File;
     std::stringstream stream;
-    if(transactionCode == "00" || transactionCode == "02"){
-        stream << std::fixed << std::setprecision(2) << fixed << user.getCredits();
-    }else{
+    if(transactionCode == "06"){
         stream << std::fixed << std::setprecision(2) << fixed << user.getCreditCount();
+    }else{
+        stream << std::fixed << std::setprecision(2) << fixed << user.getCredits();
     }
     string credHolder = stream.str();
     string code = transactionCode;
@@ -143,4 +166,15 @@ void Writer::WriteAdvertiseToDailyTransactionFile(Users user, string item, int n
          << setfill('0') << setw(3) << numDays << " "
          << setprecision(2) << fixed << aucBid;
     file.close();
+}
+
+
+void Writer::RefundWriteToDailyTransactionFile(string buyerName, string sellerName, float refundAmount){
+    string buffer;
+    
+    buffer = std::to_string(refundAmount);
+    outFile.open(DAILY_TRANSACTION_FILE, ios::app);
+    outFile << "\n05 " + buyerName + " " +  sellerName + " " + buffer; 
+
+    outFile.close();
 }

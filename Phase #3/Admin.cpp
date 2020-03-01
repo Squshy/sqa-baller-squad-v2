@@ -81,8 +81,9 @@ void Admin::DeleteUser(std::string** users, int numUsers){
             } else {
                 LightHighlight();
                 std::cout << Spaces(18)
-                        << username << "Invalid Confirmation.";
+                        << "Invalid Confirmation.";
                 Highlight();
+                confirm = true;
             }
         }
     }
@@ -164,7 +165,7 @@ void Admin::DisableUser(string** users, int numUsers){
     getline(cin, buffer);
 
     for(int i = 0; i < numUsers; i++) {
-        if(users[i][0] == buffer) {
+        if(users[i][0].compare(buffer) == 0) {
             userFound = true;
             user.setUserName(users[i][0]);
             user.setUserType(users[i][2]);
@@ -208,6 +209,71 @@ void Admin::DisableUser(string** users, int numUsers){
     }
 }  
 
-void Admin::Refund(Items) {
+void Admin::Refund(string** users, int numUsers) {
+    const string code = "05";
+    string sellerUsername, buyerUsername, buffer = "";
+    bool userFound, validRefund = false;
+    Writer writer;
+    Users user;
+    float credits;
 
+    while(validRefund == false){
+        sellerUsername = "";
+        std::cout << "\nPlease enter seller's name: ";
+        getline(cin, sellerUsername);
+        if (exitCmd(sellerUsername) == true){
+            std::cout << "\nExit command executed. Moving you to main menu.";
+            break;
+        }
+        for(int i = 0; i < numUsers; i++) if(users[i][0] == sellerUsername){
+            userFound = true;
+        }
+        userFound = MatchUser(users, numUsers, sellerUsername);
+
+        if (userFound == false){
+            UserNotFound(sellerUsername);
+        } else {
+            buyerUsername = "";
+            std::cout << "\nPlease enter buyer's name: ";
+            getline(cin,buyerUsername);
+
+            if (exitCmd(buyerUsername) == true){
+                std::cout << "\nExit command executed. Moving you to main menu.";
+                break;
+            }
+
+            for(int i = 0; i < numUsers; i++) if(users[i][0] == buyerUsername){
+                userFound = true;
+            }
+            userFound = MatchUser(users, numUsers, buyerUsername);
+
+            if(userFound == false){
+                UserNotFound(buyerUsername);
+            } else if(sellerUsername == buyerUsername) {
+                std::cout << "\nError: Buyer and Seller names cannot be the same.";
+            }else{
+                cout << "\nPlease enter credit amount to refund: ";
+                getline(cin,buffer);
+
+                if (exitCmd(buffer) == true){
+                    std::cout << "\nExit command executed. Moving you to main menu.";
+                    break;
+                }
+                if(IsDecimalNumber(buffer)){
+                    credits = std::stof(buffer);
+                    if(credits <= 0.0){
+                        std::cout << "You cannot refund less than 0 credits";
+                    } else if(credits >= 999.99){ // Max bid
+                        std::cout << "You cannot refund more than 999.99";
+                    } else {
+                        std::cout << "\nMoney has been refunded, moving you back to main menu";
+                        writer.RefundWriteToDailyTransactionFile(buyerUsername, sellerUsername, credits);
+                        break;
+                    }
+                } else {
+                    std::cout << "Error: Refund must be numeric and must be between $0.00 and 999.9";
+                }
+            }
+        }    
+    }
 }

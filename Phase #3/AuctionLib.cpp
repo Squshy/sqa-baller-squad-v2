@@ -68,6 +68,17 @@ bool IsInteger(std::string str) {
     return true;
 }
 
+
+/**
+ * Checks to see if the string only contains numbers
+ */
+bool IsString(std::string s)
+{
+    std::string::const_iterator it = s.begin();
+    while (it != s.end() && std::isdigit(*it)) ++it;
+    return !s.empty() && it == s.end();
+}
+
 /**
  * Loop through a list of users to see if a name matches
  */
@@ -88,4 +99,15 @@ void Highlight() {
  */
 void LightHighlight() {
     std::cout << "\n---------------------------------------------------------\n";
+}
+
+/**
+ * Checks if input is "exit" or not
+ */
+bool exitCmd(string buffer){
+    if (ToLower(buffer).compare(EXIT) == 0){
+        return true;
+    }else {
+        return false;
+    }
 }

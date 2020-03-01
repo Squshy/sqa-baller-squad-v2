@@ -23,17 +23,17 @@ do
         touch $t/trans.out
 ​
         # Run the script and dump the output in the folder to be compared
-        ./auction-system.exe current_user_accounts_file.txt available_items_file.txt $t/trans.out < $t/test.inp
+        ./auction-system.exe current_user_accounts_file.txt available_items_file.txt daily_transaction_file.txt < $t/test.inp > $t/trans.out 
 ​
 ​
 ​
         # Write a file documenting if the file is ok or not
         if diff $t/trans.out $t/test.out;
         then
-            echo "TEST $t: GOOD" >> test_results.txt
+            echo "TEST $t: PASS" >> test_results.txt
         else
             # If the file is not good document the issue
-            echo "TEST $t: BAD" >> test_results.txt
+            echo "TEST $t: FAIL" >> test_results.txt
 ​
             echo "TEST $t:" >> diff_log.txt
             diff $t/trans.out $t/test.out >> diff_log.txt
@@ -43,7 +43,7 @@ do
 ​
 ​
         # Remove the temporary transaction file
-        rm $t/trans.out
+        #rm $t/trans.out
     fi
     
     # Clear the terminal at the end of the run
